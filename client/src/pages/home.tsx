@@ -54,99 +54,116 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-16 pt-24 relative overflow-hidden">
-        {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-transparent"></div>
-        
+      <section className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        {/* Animated Background Elements */}
+        <div className="absolute inset-0">
+          {/* Grain Effect */}
+          <div className="absolute inset-0 opacity-[0.15] bg-[url('data:image/svg+xml,%3Csvg viewBox=%220 0 256 256%22 xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cfilter id=%22noiseFilter%22%3E%3CfeTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%224%22 stitchTiles=%22stitch%22/%3E%3C/filter%3E%3Crect width=%22100%25%22 height=%22100%25%22 filter=%22url(%23noiseFilter)%22 opacity=%220.3%22/%3E%3C/svg%3E')]"></div>
+          
+          {/* Blurry Circular Gradients */}
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-gradient-to-r from-blue-500/30 to-purple-500/30 rounded-full blur-3xl opacity-70 animate-pulse"></div>
+          <div className="absolute top-1/3 right-1/4 w-80 h-80 bg-gradient-to-r from-accent/40 to-green-500/40 rounded-full blur-3xl opacity-60 animate-pulse animation-delay-1000"></div>
+          <div className="absolute bottom-1/4 left-1/3 w-72 h-72 bg-gradient-to-r from-primary/30 to-blue-400/30 rounded-full blur-3xl opacity-50 animate-pulse animation-delay-2000"></div>
+          
+          {/* Glassmorphism Overlay */}
+          <div className="absolute inset-0 bg-gradient-to-br from-white/5 via-transparent to-black/10 backdrop-blur-sm"></div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
-            {/* Left Content Column */}
-            <div className="lg:col-span-2 space-y-8 relative z-10">
-              {/* Main Hero Content */}
-              <div className="space-y-6 animate-in slide-in-from-left duration-700">
-                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-green-50 border border-blue-100 mb-4">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-gray-700">Trusted by 100+ companies</span>
-                </div>
-                
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" data-testid="hero-title">
-                  In Need of Highly Skilled Developers at a Lower Cost?
-                </h1>
-                
-                <p className="text-lg text-gray-600 leading-relaxed" data-testid="hero-description">
-                  We provide you with a dedicated remote development team with some of the 
-                  top developers in <span className="font-semibold text-primary">Bangladesh!</span>
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <Button 
-                    onClick={handleExploreServices} 
-                    className="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-3 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
-                    data-testid="button-explore-services"
-                  >
-                    Let's talk development
-                    <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
-                  </Button>
-                  
-                  <Button 
-                    onClick={handleDownloadProfile} 
-                    variant="outline"
-                    className="group border-2 border-primary/20 bg-white/80 backdrop-blur-sm text-primary hover:bg-primary hover:text-white px-8 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300"
-                    data-testid="button-download-profile"
-                  >
-                    Download company profile
-                    <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">↓</span>
-                  </Button>
-                </div>
+          <div className="text-center space-y-8">
+            {/* Status Chip */}
+            <div className="inline-flex items-center space-x-3 px-6 py-3 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl hover:bg-white/15 transition-all duration-300 group cursor-pointer">
+              <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse shadow-lg shadow-green-400/50"></div>
+              <span className="text-sm font-medium text-white/90 group-hover:text-white transition-colors duration-300">Trusted by 100+ Global Companies</span>
+              <div className="w-6 h-6 rounded-full bg-gradient-to-r from-green-400/20 to-emerald-500/20 flex items-center justify-center">
+                <div className="w-2 h-2 bg-white/60 rounded-full group-hover:scale-110 transition-transform duration-300"></div>
               </div>
             </div>
 
-            {/* Right Image Column - Larger */}
-            <div className="lg:col-span-3 relative">
-              <div className="relative group">
-                <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-green-600 rounded-lg blur opacity-25 group-hover:opacity-40 transition duration-1000 group-hover:duration-200"></div>
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800" 
-                  alt="Professional development team collaboration - diverse group of skilled developers working together in modern office"
-                  className="relative w-full h-auto rounded-lg shadow-2xl transform hover:scale-[1.02] transition-all duration-500 hover:shadow-3xl"
-                  data-testid="hero-image"
-                />
-              </div>
+            {/* Main Heading */}
+            <div className="space-y-6 max-w-5xl mx-auto">
+              <h1 className="text-5xl lg:text-7xl font-bold bg-gradient-to-r from-white via-white to-white/80 bg-clip-text text-transparent leading-[1.1] tracking-tight animate-in slide-in-from-bottom duration-1000" data-testid="hero-title">
+                Transform Your Business with
+                <span className="block bg-gradient-to-r from-accent via-blue-400 to-primary bg-clip-text text-transparent animate-in slide-in-from-bottom duration-1000 delay-200">
+                  Expert Outsourcing Solutions
+                </span>
+              </h1>
+              
+              <p className="text-xl lg:text-2xl text-white/70 leading-relaxed max-w-3xl mx-auto animate-in slide-in-from-bottom duration-1000 delay-400" data-testid="hero-description">
+                Streamline operations, reduce costs, and scale efficiently with our comprehensive 
+                <span className="text-accent font-semibold"> Cloud Accounting, BPO, and Software Development</span> services.
+              </p>
             </div>
+
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-6 justify-center items-center animate-in slide-in-from-bottom duration-1000 delay-600">
+              <Button 
+                onClick={handleExploreServices} 
+                className="group relative px-8 py-4 bg-gradient-to-r from-accent via-blue-500 to-primary text-white text-lg font-semibold rounded-2xl shadow-2xl shadow-blue-500/25 hover:shadow-blue-500/40 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 border border-white/20 backdrop-blur-sm overflow-hidden"
+                data-testid="button-explore-services"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center space-x-3">
+                  <span>Start Your Journey</span>
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:rotate-45 transition-transform duration-300">
+                    <span className="text-sm">→</span>
+                  </div>
+                </div>
+              </Button>
+              
+              <Button 
+                onClick={handleDownloadProfile} 
+                variant="outline"
+                className="group relative px-8 py-4 bg-white/10 backdrop-blur-md border-2 border-white/30 text-white text-lg font-semibold rounded-2xl shadow-2xl hover:bg-white/20 hover:border-white/40 transform hover:-translate-y-1 hover:scale-105 transition-all duration-300 overflow-hidden"
+                data-testid="button-download-profile"
+              >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                <div className="relative flex items-center space-x-3">
+                  <span>Download Profile</span>
+                  <div className="w-6 h-6 rounded-full bg-white/20 flex items-center justify-center group-hover:animate-bounce">
+                    <span className="text-sm">↓</span>
+                  </div>
+                </div>
+              </Button>
+            </div>
+
+            {/* Floating Elements */}
+            <div className="absolute top-20 left-20 w-4 h-4 bg-white/20 rounded-full animate-ping animation-delay-1000 hidden lg:block"></div>
+            <div className="absolute top-40 right-32 w-2 h-2 bg-accent/60 rounded-full animate-ping animation-delay-2000 hidden lg:block"></div>
+            <div className="absolute bottom-32 left-16 w-3 h-3 bg-primary/40 rounded-full animate-ping animation-delay-3000 hidden lg:block"></div>
           </div>
 
-          {/* Testimonial Section - Overlapping */}
-          <div className="mt-16 relative">
-            <div className="max-w-5xl mx-auto relative">
-              <div className="relative overflow-hidden">
-                {/* Testimonial Container with Carousel */}
+          {/* Modern Testimonial Carousel */}
+          <div className="mt-20 relative animate-in slide-in-from-bottom duration-1000 delay-800">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative overflow-hidden rounded-3xl">
                 <div 
-                  className="flex transition-transform duration-500 ease-in-out"
+                  className="flex transition-transform duration-700 ease-out"
                   style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
                 >
                   {testimonials.map((testimonial, index) => (
-                    <div key={index} className="w-full flex-shrink-0">
-                      <div className="group bg-white/80 backdrop-blur-md border border-white/20 p-4 py-3 rounded-tl-3xl rounded-tr-lg rounded-br-lg rounded-bl-lg relative max-w-4xl mx-auto lg:mx-0 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                        {/* Large Quote Marks */}
-                        <div className="text-4xl font-bold text-primary leading-none mb-2 select-none group-hover:scale-110 transition-transform duration-300">"</div>
+                    <div key={index} className="w-full flex-shrink-0 px-4">
+                      <div className="group bg-white/10 backdrop-blur-xl border border-white/20 p-8 rounded-3xl shadow-2xl hover:bg-white/15 hover:border-white/30 transition-all duration-300 cursor-pointer">
+                        {/* Quote Icon */}
+                        <div className="text-5xl font-bold text-accent/60 leading-none mb-6 select-none group-hover:text-accent/80 transition-colors duration-300">"</div>
                         
                         {/* Testimonial Content */}
-                        <div className="space-y-2">
-                          <blockquote className="text-sm text-gray-700 leading-relaxed">
+                        <div className="space-y-4">
+                          <blockquote className="text-lg text-white/90 leading-relaxed">
                             {testimonial.quote}
                           </blockquote>
                           
-                          <div className="flex items-center space-x-3">
+                          <div className="flex items-center space-x-4 pt-4 border-t border-white/10">
+                            <div className="w-12 h-12 rounded-full bg-gradient-to-r from-accent to-primary flex items-center justify-center text-white font-bold text-lg shadow-lg">
+                              {testimonial.author.split(' ').map(n => n[0]).join('')}
+                            </div>
                             <div>
-                              <p className="text-xs font-semibold text-gray-900">
+                              <p className="font-semibold text-white">
                                 {testimonial.author}
                               </p>
-                              <p className="text-xs text-gray-500">
+                              <p className="text-white/60 text-sm">
                                 {testimonial.position}
                               </p>
-                            </div>
-                            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                              {testimonial.author.split(' ').map(n => n[0]).join('')}
                             </div>
                           </div>
                         </div>
@@ -156,14 +173,14 @@ export default function Home() {
                 </div>
                 
                 {/* Carousel Indicators */}
-                <div className="flex space-x-2 mt-4 justify-center lg:justify-start">
+                <div className="flex space-x-3 mt-8 justify-center">
                   {testimonials.map((_, index) => (
                     <button
                       key={index}
-                      className={`w-3 h-3 rounded-full border-2 transition-all duration-300 hover:scale-125 ${
+                      className={`w-4 h-4 rounded-full transition-all duration-300 hover:scale-125 ${
                         index === currentTestimonial 
-                          ? 'bg-primary border-primary shadow-lg' 
-                          : 'bg-transparent border-primary/40 hover:border-primary/70'
+                          ? 'bg-accent shadow-lg shadow-accent/50 scale-110' 
+                          : 'bg-white/30 hover:bg-white/50'
                       }`}
                       onClick={() => setCurrentTestimonial(index)}
                       data-testid={`carousel-indicator-${index}`}
@@ -173,6 +190,11 @@ export default function Home() {
               </div>
             </div>
           </div>
+        </div>
+
+        {/* Mouse Interaction Effects */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-1/2 left-1/2 w-1 h-1 bg-white/20 rounded-full opacity-0 hover:opacity-100 transition-opacity duration-300 transform -translate-x-1/2 -translate-y-1/2"></div>
         </div>
       </section>
 
