@@ -1,31 +1,23 @@
-import { useState } from "react";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { GoogleTranslateService } from "@/lib/google-translate";
+import { useTranslation } from "@/lib/translation-context";
+import { languages, Language } from "@/lib/translations";
 
 export function LanguageSelector() {
-  const [selectedLanguage, setSelectedLanguage] = useState("en");
-  const translateService = GoogleTranslateService.getInstance();
+  const { language, setLanguage } = useTranslation();
 
-  const languages = translateService.getSupportedLanguages();
-
-  const handleLanguageChange = async (languageCode: string) => {
-    setSelectedLanguage(languageCode);
-    try {
-      await translateService.translateTo(languageCode);
-    } catch (error) {
-      console.error("Translation error:", error);
-    }
+  const handleLanguageChange = (languageCode: string) => {
+    setLanguage(languageCode as Language);
   };
 
   return (
-    <Select value={selectedLanguage} onValueChange={handleLanguageChange} data-testid="language-selector">
+    <Select value={language} onValueChange={handleLanguageChange} data-testid="language-selector">
       <SelectTrigger className="w-32 bg-white border border-border">
         <SelectValue placeholder="Language" />
       </SelectTrigger>
       <SelectContent>
-        {languages.map((language) => (
-          <SelectItem key={language.code} value={language.code} data-testid={`language-${language.code}`}>
-            {language.nativeName}
+        {languages.map((lang) => (
+          <SelectItem key={lang.code} value={lang.code} data-testid={`language-${lang.code}`}>
+            {lang.nativeName}
           </SelectItem>
         ))}
       </SelectContent>
