@@ -1,0 +1,382 @@
+import { useLocation } from "wouter";
+import { Link } from "wouter";
+import { Button } from "@/components/ui/button";
+import { ArrowLeft } from "lucide-react";
+
+export default function ServiceDetail() {
+  const [location] = useLocation();
+  const serviceType = location.includes('/bpo') ? 'bpo' : 'software';
+
+  if (serviceType === 'bpo') {
+    return <BPOServiceDetail />;
+  } else {
+    return <SoftwareServiceDetail />;
+  }
+}
+
+function BPOServiceDetail() {
+  const cloudAccountingServices = [
+    {
+      icon: "fas fa-laptop",
+      title: "Virtual Accounting",
+      description: "Remote accounting services providing flexibility and reducing need for in-house staff."
+    },
+    {
+      icon: "fas fa-book", 
+      title: "Book-keeping",
+      description: "Recording financial transactions (sales, expenses, payments) for accurate financial records."
+    },
+    {
+      icon: "fas fa-balance-scale",
+      title: "Bank Reconciliation", 
+      description: "Matching company records with bank statements to ensure accuracy and detect discrepancies."
+    },
+    {
+      icon: "fas fa-chart-pie",
+      title: "MIS Reporting",
+      description: "Generating management reports for business insights and strategic decision-making."
+    },
+    {
+      icon: "fas fa-money-bill-wave",
+      title: "Accounts Payable & Receivable",
+      description: "Tracking outgoing and incoming payments to maintain healthy cash flow."
+    },
+    {
+      icon: "fas fa-boxes",
+      title: "Inventory Management", 
+      description: "Monitoring stock levels and tracking purchases/sales for efficient supply chain operations."
+    }
+  ];
+
+  const imageEditingServices = [
+    { icon: "fas fa-eraser", title: "Background Removal" },
+    { icon: "fas fa-palette", title: "Color Correction" },
+    { icon: "fas fa-user", title: "Face Swapping" },
+    { icon: "fas fa-mask", title: "Image Masking" },
+    { icon: "fas fa-magic", title: "Photo Manipulation" },
+    { icon: "fas fa-sun", title: "Shadow Creation" },
+    { icon: "fas fa-mirror", title: "Reflection Creation" },
+    { icon: "fas fa-user-edit", title: "Model Touch-up" }
+  ];
+
+  return (
+    <div className="pt-16" data-testid="bpo-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Services
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="bpo-title">Business Process Outsourcing</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="bpo-description">
+              Our BPO services streamline essential business functions and enhance operational efficiency, enabling clients to focus on their core competencies and drive growth.
+            </p>
+          </div>
+
+          {/* Cloud Accounting Services */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-primary mb-8" data-testid="cloud-accounting-title">Cloud Accounting Services</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {cloudAccountingServices.map((service, index) => (
+                <div key={index} className="bg-muted rounded-xl p-6" data-testid={`cloud-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
+                    <i className={`${service.icon} text-white`}></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary mb-3">{service.title}</h3>
+                  <p className="text-muted-foreground">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Other BPO Services */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            {/* Payroll Management */}
+            <div className="bg-white rounded-xl shadow-lg p-8" data-testid="payroll-management-card">
+              <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
+                <i className="fas fa-users text-2xl text-white"></i>
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-4">Payroll Management</h3>
+              <p className="text-muted-foreground mb-6">
+                Processing employee salaries, tax deductions, and benefits. Ensures accurate and timely payroll processing, maintaining employee satisfaction and compliance with changing tax laws and labour regulations.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center"><i className="fas fa-check text-accent mr-2"></i> Employee salary processing</li>
+                <li className="flex items-center"><i className="fas fa-check text-accent mr-2"></i> Tax deductions and compliance</li>
+                <li className="flex items-center"><i className="fas fa-check text-accent mr-2"></i> Benefits administration</li>
+              </ul>
+            </div>
+
+            {/* Tax Services */}
+            <div className="bg-white rounded-xl shadow-lg p-8" data-testid="tax-services-card">
+              <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center mb-6">
+                <i className="fas fa-calculator text-2xl text-white"></i>
+              </div>
+              <h3 className="text-2xl font-bold text-primary mb-4">Tax Services</h3>
+              <p className="text-muted-foreground mb-6">
+                Preparing direct and indirect tax returns (Income-Tax, GST, VAT). Ensures accurate and on-time tax compliance, minimising risk. Expert guidance helps identify deductions and credits to optimise tax liabilities.
+              </p>
+              <ul className="space-y-2 text-sm text-muted-foreground">
+                <li className="flex items-center"><i className="fas fa-check text-accent mr-2"></i> Income tax return preparation</li>
+                <li className="flex items-center"><i className="fas fa-check text-accent mr-2"></i> GST and VAT compliance</li>
+                <li className="flex items-center"><i className="fas fa-check text-accent mr-2"></i> Tax optimization strategies</li>
+              </ul>
+            </div>
+          </div>
+
+          {/* Image Editing Services */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-primary mb-8" data-testid="image-editing-title">Image Editing Services</h2>
+            <p className="text-lg text-muted-foreground mb-8" data-testid="image-editing-description">
+              Enhancing and manipulating images for various business needs, especially in marketing and e-commerce to create visually appealing and professional imagery.
+            </p>
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {imageEditingServices.map((service, index) => (
+                <div key={index} className="text-center" data-testid={`image-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <i className={`${service.icon} text-white`}></i>
+                  </div>
+                  <h4 className="font-semibold text-primary">{service.title}</h4>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Back Office Support */}
+          <div className="bg-muted rounded-xl p-8" data-testid="back-office-support">
+            <h2 className="text-3xl font-bold text-primary mb-6">Back-Office Support Services</h2>
+            <p className="text-lg text-muted-foreground mb-6">
+              Essential administrative and operational tasks that support business functions, freeing up internal resources to focus on core, revenue-generating activities.
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div data-testid="document-management">
+                <h3 className="text-xl font-semibold text-primary mb-3">Document Management</h3>
+                <p className="text-muted-foreground">Organizing, storing, and retrieving files/records to ensure efficient access to important information.</p>
+              </div>
+              <div data-testid="order-processing">
+                <h3 className="text-xl font-semibold text-primary mb-3">Order Processing & Fulfillment</h3>
+                <p className="text-muted-foreground">Managing orders, updating databases, and coordinating shipments for smooth operations.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function SoftwareServiceDetail() {
+  const coreServices = [
+    {
+      icon: "fas fa-code",
+      bgColor: "bg-primary",
+      title: "Custom Software Development",
+      description: "Tailored software solutions built to meet specific business requirements across various industries and use cases.",
+      features: [
+        "Web application development",
+        "Enterprise software solutions", 
+        "API development and integration",
+        "Database design and management"
+      ]
+    },
+    {
+      icon: "fas fa-mobile-alt",
+      bgColor: "bg-secondary",
+      title: "Mobile Applications", 
+      description: "Native and cross-platform mobile app development for iOS and Android platforms.",
+      features: [
+        "iOS and Android development",
+        "Cross-platform solutions",
+        "App store optimization",
+        "Mobile app maintenance"
+      ]
+    },
+    {
+      icon: "fas fa-cloud",
+      bgColor: "bg-accent",
+      title: "Cloud Infrastructure Optimization",
+      description: "Scalable cloud solutions and infrastructure optimization for improved performance and cost efficiency.",
+      features: [
+        "Cloud migration services", 
+        "Infrastructure as Code (IaC)",
+        "Performance optimization",
+        "Cost optimization strategies"
+      ]
+    },
+    {
+      icon: "fas fa-robot", 
+      bgColor: "bg-primary",
+      title: "Test Automation",
+      description: "Comprehensive testing solutions to ensure software quality and reliability across all platforms.",
+      features: [
+        "Automated testing frameworks",
+        "Continuous integration testing",
+        "Performance testing", 
+        "Security testing"
+      ]
+    }
+  ];
+
+  const industries = [
+    {
+      icon: "fas fa-shopping-cart",
+      title: "E-commerce",
+      description: "Online retail platforms, payment gateways, inventory management systems"
+    },
+    {
+      icon: "fas fa-coins",
+      title: "Fintech", 
+      description: "Financial applications, banking solutions, payment processing systems"
+    },
+    {
+      icon: "fas fa-gavel",
+      title: "Legal Tech",
+      description: "Legal case management, document automation, compliance solutions"
+    },
+    {
+      icon: "fas fa-globe",
+      title: "Web Portals",
+      description: "Enterprise portals, customer portals, content management systems"
+    }
+  ];
+
+  const techStack = [
+    { icon: "fab fa-react", name: "React" },
+    { icon: "fab fa-node-js", name: "Node.js" },
+    { icon: "fab fa-python", name: "Python" },
+    { icon: "fab fa-java", name: "Java" },
+    { icon: "fab fa-aws", name: "AWS" },
+    { icon: "fab fa-docker", name: "Docker" }
+  ];
+
+  const developmentProcess = [
+    {
+      number: 1,
+      title: "Discovery & Planning",
+      description: "Understanding requirements and creating detailed project roadmaps",
+      bgColor: "bg-accent"
+    },
+    {
+      number: 2,
+      title: "Design & Architecture", 
+      description: "Creating scalable system architecture and user experience design",
+      bgColor: "bg-primary"
+    },
+    {
+      number: 3,
+      title: "Development & Testing",
+      description: "Agile development with continuous integration and testing", 
+      bgColor: "bg-secondary"
+    },
+    {
+      number: 4,
+      title: "Deployment & Support",
+      description: "Seamless deployment and ongoing maintenance support",
+      bgColor: "bg-accent"
+    }
+  ];
+
+  return (
+    <div className="pt-16" data-testid="software-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                Back to Services
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="software-title">Software Outsourcing & IT Solutions</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="software-description">
+              Custom software development, mobile applications, cloud infrastructure optimization, and specialized solutions tailored for various industries including e-commerce, fintech, legal tech, and web portals.
+            </p>
+          </div>
+
+          {/* Core Services */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
+            {coreServices.map((service, index) => (
+              <div key={index} className="bg-white rounded-xl shadow-lg p-8" data-testid={`core-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className={`w-16 h-16 ${service.bgColor} rounded-lg flex items-center justify-center mb-6`}>
+                  <i className={`${service.icon} text-2xl text-white`}></i>
+                </div>
+                <h3 className="text-2xl font-bold text-primary mb-4">{service.title}</h3>
+                <p className="text-muted-foreground mb-6">{service.description}</p>
+                <ul className="space-y-2 text-sm text-muted-foreground">
+                  {service.features.map((feature, idx) => (
+                    <li key={idx} className="flex items-center">
+                      <i className="fas fa-check text-accent mr-2"></i> {feature}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+
+          {/* Industry Specializations */}
+          <div className="mb-16">
+            <h2 className="text-3xl font-bold text-primary mb-8 text-center" data-testid="industry-specializations-title">Industry Specializations</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {industries.map((industry, index) => (
+                <div key={index} className="text-center" data-testid={`industry-${industry.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
+                    <i className={`${industry.icon} text-2xl text-white`}></i>
+                  </div>
+                  <h3 className="text-xl font-semibold text-primary mb-3">{industry.title}</h3>
+                  <p className="text-muted-foreground">{industry.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Technology Stack */}
+          <div className="bg-muted rounded-xl p-8 mb-16" data-testid="technology-stack">
+            <h2 className="text-3xl font-bold text-primary mb-8 text-center">Our Technology Stack</h2>
+            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
+              {techStack.map((tech, index) => (
+                <div key={index} data-testid={`tech-${tech.name.toLowerCase()}`}>
+                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-2">
+                    <i className={`${tech.icon} text-white`}></i>
+                  </div>
+                  <p className="text-sm font-medium text-muted-foreground">{tech.name}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Process */}
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div>
+              <h2 className="text-3xl font-bold text-primary mb-6" data-testid="development-process-title">Our Development Process</h2>
+              <div className="space-y-6">
+                {developmentProcess.map((step, index) => (
+                  <div key={index} className="flex items-start space-x-4" data-testid={`process-step-${step.number}`}>
+                    <div className={`w-8 h-8 ${step.bgColor} rounded-full flex items-center justify-center flex-shrink-0`}>
+                      <span className="text-white font-bold text-sm">{step.number}</span>
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-primary mb-1">{step.title}</h3>
+                      <p className="text-muted-foreground">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Software development team working on computers" 
+                className="rounded-xl shadow-lg w-full h-auto"
+                data-testid="development-team-image"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
