@@ -41,14 +41,24 @@ export default function Home() {
     window.location.href = "/contact";
   };
 
+  const handleDownloadProfile = () => {
+    // Create a link to download the PDF
+    const link = document.createElement('a');
+    link.href = '/attached_assets/Absouts Booklet_1757063950321.pdf';
+    link.download = 'Absouts-Company-Profile.pdf';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div data-testid="home-page">
       {/* Hero Section */}
       <section className="bg-white py-16 pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
             {/* Left Content Column */}
-            <div className="space-y-8">
+            <div className="lg:col-span-2 space-y-8 relative z-10">
               {/* Main Hero Content */}
               <div className="space-y-6">
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" data-testid="hero-title">
@@ -60,77 +70,90 @@ export default function Home() {
                   top developers in <span className="font-semibold text-primary">Bangladesh!</span>
                 </p>
                 
-                <Button 
-                  onClick={handleExploreServices} 
-                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-base font-semibold rounded-md"
-                  data-testid="button-explore-services"
-                >
-                  Let's talk development
-                </Button>
-              </div>
-
-              {/* Testimonial Section */}
-              <div className="mt-12 pt-8">
-                <div className="relative overflow-hidden">
-                  {/* Testimonial Container with Carousel */}
-                  <div 
-                    className="flex transition-transform duration-500 ease-in-out"
-                    style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+                <div className="flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    onClick={handleExploreServices} 
+                    className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-base font-semibold rounded-md"
+                    data-testid="button-explore-services"
                   >
-                    {testimonials.map((testimonial, index) => (
-                      <div key={index} className="w-full flex-shrink-0">
-                        <div className="bg-gray-100 p-6 rounded-tl-3xl rounded-tr-lg rounded-br-lg rounded-bl-lg relative">
-                          {/* Large Quote Marks */}
-                          <div className="text-6xl font-bold text-primary leading-none mb-4 select-none">"</div>
-                          
-                          {/* Testimonial Content */}
-                          <div className="space-y-4">
-                            <blockquote className="text-base text-gray-700 leading-relaxed">
-                              {testimonial.quote}
-                            </blockquote>
-                            
-                            <div>
-                              <p className="text-sm font-semibold text-gray-900">
-                                {testimonial.author}
-                              </p>
-                              <p className="text-sm text-gray-500">
-                                {testimonial.position}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                    Let's talk development
+                  </Button>
                   
-                  {/* Carousel Indicators */}
-                  <div className="flex space-x-2 mt-6">
-                    {testimonials.map((_, index) => (
-                      <button
-                        key={index}
-                        className={`w-3 h-3 rounded-full border-2 transition-all ${
-                          index === currentTestimonial 
-                            ? 'bg-primary border-primary' 
-                            : 'bg-transparent border-primary/40'
-                        }`}
-                        onClick={() => setCurrentTestimonial(index)}
-                        data-testid={`carousel-indicator-${index}`}
-                      />
-                    ))}
-                  </div>
+                  <Button 
+                    onClick={handleDownloadProfile} 
+                    variant="outline"
+                    className="border-2 border-primary text-primary hover:bg-primary hover:text-white px-8 py-3 text-base font-semibold rounded-md"
+                    data-testid="button-download-profile"
+                  >
+                    Download company profile
+                  </Button>
                 </div>
               </div>
             </div>
 
-            {/* Right Image Column */}
-            <div className="lg:pl-8">
+            {/* Right Image Column - Larger */}
+            <div className="lg:col-span-3 relative">
               <div className="relative">
                 <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700" 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&h=800" 
                   alt="Professional development team collaboration - diverse group of skilled developers working together in modern office"
                   className="w-full h-auto rounded-lg shadow-lg"
                   data-testid="hero-image"
                 />
+              </div>
+            </div>
+          </div>
+
+          {/* Testimonial Section - Overlapping */}
+          <div className="mt-16 relative">
+            <div className="max-w-5xl mx-auto relative">
+              <div className="relative overflow-hidden">
+                {/* Testimonial Container with Carousel */}
+                <div 
+                  className="flex transition-transform duration-500 ease-in-out"
+                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+                >
+                  {testimonials.map((testimonial, index) => (
+                    <div key={index} className="w-full flex-shrink-0">
+                      <div className="bg-gray-100 p-4 py-3 rounded-tl-3xl rounded-tr-lg rounded-br-lg rounded-bl-lg relative max-w-4xl mx-auto lg:mx-0">
+                        {/* Large Quote Marks */}
+                        <div className="text-4xl font-bold text-primary leading-none mb-2 select-none">"</div>
+                        
+                        {/* Testimonial Content */}
+                        <div className="space-y-2">
+                          <blockquote className="text-sm text-gray-700 leading-relaxed">
+                            {testimonial.quote}
+                          </blockquote>
+                          
+                          <div>
+                            <p className="text-xs font-semibold text-gray-900">
+                              {testimonial.author}
+                            </p>
+                            <p className="text-xs text-gray-500">
+                              {testimonial.position}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                
+                {/* Carousel Indicators */}
+                <div className="flex space-x-2 mt-4 justify-center lg:justify-start">
+                  {testimonials.map((_, index) => (
+                    <button
+                      key={index}
+                      className={`w-3 h-3 rounded-full border-2 transition-all ${
+                        index === currentTestimonial 
+                          ? 'bg-primary border-primary' 
+                          : 'bg-transparent border-primary/40'
+                      }`}
+                      onClick={() => setCurrentTestimonial(index)}
+                      data-testid={`carousel-indicator-${index}`}
+                    />
+                  ))}
+                </div>
               </div>
             </div>
           </div>
