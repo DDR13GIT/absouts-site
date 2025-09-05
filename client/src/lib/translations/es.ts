@@ -112,6 +112,48 @@ export const es: TranslationKeys = {
     badge: "Soluciones Integrales",
     title: "Nuestros Servicios",
     description: "Soluciones integrales de subcontratación diseñadas para satisfacer las diversas demandas operativas y tecnológicas de las empresas de hoy",
+    serviceCards: {
+      ecommerce: {
+        title: "Desarrollo de E-commerce",
+        description: "Soluciones completas de comercio electrónico con plataformas modernas, integración de pagos e interfaces amigables.",
+        button: "Ver Más"
+      },
+      mobile: {
+        title: "Desarrollo de Aplicaciones Móviles",
+        description: "Aplicaciones móviles nativas y multiplataforma para iOS y Android con diseño UI/UX moderno.",
+        button: "Ver Más"
+      },
+      cloud: {
+        title: "Optimización de Infraestructura en la Nube",
+        description: "Soluciones escalables en la nube, servicios de migración y optimización de infraestructura para mejor rendimiento.",
+        button: "Ver Más"
+      },
+      testing: {
+        title: "Automatización de Pruebas",
+        description: "Marcos de pruebas integrales, soluciones de testing automatizado y servicios de aseguramiento de calidad.",
+        button: "Ver Más"
+      },
+      legaltech: {
+        title: "Soluciones LegalTech",
+        description: "Gestión de casos legales, automatización de documentos, soluciones de cumplimiento y optimización de flujos legales.",
+        button: "Ver Más"
+      },
+      webportal: {
+        title: "Desarrollo de Portales Web",
+        description: "Portales empresariales, portales de clientes y sistemas de gestión de contenido con arquitectura moderna.",
+        button: "Ver Más"
+      },
+      fintech: {
+        title: "Soluciones Fintech",
+        description: "Aplicaciones financieras, soluciones bancarias, procesamiento de pagos y plataformas de tecnología financiera.",
+        button: "Ver Más"
+      },
+      ai: {
+        title: "Soluciones de IA",
+        description: "Aplicaciones de inteligencia artificial, modelos de aprendizaje automático y soluciones de automatización inteligente.",
+        button: "Ver Más"
+      }
+    },
     bpo: {
       title: "Subcontratación de Procesos de Negocio",
       description: "Optimiza las funciones comerciales esenciales y mejora la eficiencia operativa con nuestros servicios integrales de BPO.",

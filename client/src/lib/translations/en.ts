@@ -110,6 +110,48 @@ export const en = {
     badge: "Comprehensive Solutions",
     title: "Our Services",
     description: "Comprehensive outsourcing solutions designed to meet the diverse operational and technological demands of businesses today",
+    serviceCards: {
+      ecommerce: {
+        title: "E-commerce Development",
+        description: "Complete e-commerce solutions with modern platforms, payment integration, and user-friendly interfaces.",
+        button: "See More"
+      },
+      mobile: {
+        title: "Mobile App Development",
+        description: "Native and cross-platform mobile applications for iOS and Android with modern UI/UX design.",
+        button: "See More"
+      },
+      cloud: {
+        title: "Cloud Infrastructure Optimization",
+        description: "Scalable cloud solutions, migration services, and infrastructure optimization for enhanced performance.",
+        button: "See More"
+      },
+      testing: {
+        title: "Test Automation",
+        description: "Comprehensive testing frameworks, automated testing solutions, and quality assurance services.",
+        button: "See More"
+      },
+      legaltech: {
+        title: "LegalTech Solutions",
+        description: "Legal case management, document automation, compliance solutions, and legal workflow optimization.",
+        button: "See More"
+      },
+      webportal: {
+        title: "Web Portal Development",
+        description: "Enterprise portals, customer portals, and content management systems with modern architecture.",
+        button: "See More"
+      },
+      fintech: {
+        title: "Fintech Solutions",
+        description: "Financial applications, banking solutions, payment processing, and financial technology platforms.",
+        button: "See More"
+      },
+      ai: {
+        title: "AI Solutions",
+        description: "Artificial intelligence applications, machine learning models, and intelligent automation solutions.",
+        button: "See More"
+      }
+    },
     bpo: {
       title: "Business Process Outsourcing",
       description: "Streamline essential business functions and enhance operational efficiency with our comprehensive BPO services.",

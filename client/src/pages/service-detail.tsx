@@ -2,6 +2,7 @@ import { useLocation } from "wouter";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
+import { useTranslation } from "@/lib/translation-context";
 
 // Import technology logos
 import restApiLogo from "@assets/1_82q9fbZA3OHhyoQ48qOypQ_1757087238421.webp";
@@ -27,13 +28,45 @@ import goLogo from "@assets/Go_Logo_Blue.svg_1757087238424.png";
 
 export default function ServiceDetail() {
   const [location] = useLocation();
-  const serviceType = location.includes('/bpo') ? 'bpo' : 'software';
+  const serviceSlug = location.split('/').pop();
 
-  if (serviceType === 'bpo') {
-    return <BPOServiceDetail />;
-  } else {
-    return <SoftwareServiceDetail />;
-  }
+  // Handle specific service slugs
+  const servicePages = {
+    'ecommerce': EcommerceDetail,
+    'mobile': MobileAppDetail,
+    'cloud': CloudInfrastructureDetail,
+    'testing': TestAutomationDetail,
+    'legaltech': LegalTechDetail,
+    'webportal': WebPortalDetail,
+    'fintech': FintechDetail,
+    'ai': AIDetail,
+    'bpo': BPOServiceDetail,
+    'software': SoftwareServiceDetail
+  };
+
+  const ServiceComponent = servicePages[serviceSlug as keyof typeof servicePages] || NotFoundService;
+  return <ServiceComponent />;
+}
+
+function NotFoundService() {
+  const { t } = useTranslation();
+  
+  return (
+    <div className="pt-16" data-testid="service-not-found">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-5xl font-bold text-primary mb-6">Service Not Found</h1>
+          <p className="text-xl text-muted-foreground mb-8">The service you're looking for doesn't exist.</p>
+          <Link href="/services">
+            <Button className="text-accent hover:text-accent/80">
+              <ArrowLeft className="mr-2 h-4 w-4" />
+              {t.common.backToServices}
+            </Button>
+          </Link>
+        </div>
+      </section>
+    </div>
+  );
 }
 
 function BPOServiceDetail() {
@@ -441,6 +474,568 @@ function SoftwareServiceDetail() {
                 className="rounded-xl shadow-lg w-full h-auto"
                 data-testid="development-team-image"
               />
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+// Individual Service Detail Components
+
+function EcommerceDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Custom E-commerce Platforms",
+    "Shopping Cart Development", 
+    "Payment Gateway Integration",
+    "Product Catalog Management",
+    "Order Management Systems",
+    "Inventory Management",
+    "Customer Account Management",
+    "Multi-currency Support",
+    "Mobile-responsive Design",
+    "SEO Optimization",
+    "Analytics and Reporting",
+    "Security Implementation"
+  ];
+
+  const technologies = [
+    "Shopify", "WooCommerce", "Magento", "BigCommerce",
+    "React", "Vue.js", "Angular", "Node.js",
+    "Python", "PHP", "Laravel", "Stripe API"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="ecommerce-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="ecommerce-title">E-commerce Development</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="ecommerce-description">
+              Complete e-commerce solutions with modern platforms, payment integration, and user-friendly interfaces designed to drive sales and enhance customer experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Core Features</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Technologies Used</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function MobileAppDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Native iOS Development",
+    "Native Android Development", 
+    "Cross-platform Solutions",
+    "UI/UX Design",
+    "App Store Optimization",
+    "Push Notifications",
+    "Offline Functionality",
+    "API Integration",
+    "In-app Purchases",
+    "Social Media Integration",
+    "Analytics Integration",
+    "App Maintenance & Updates"
+  ];
+
+  const technologies = [
+    "React Native", "Flutter", "Swift", "Kotlin",
+    "Java", "Objective-C", "Xamarin", "Firebase",
+    "AWS Mobile", "App Store Connect", "Google Play Console"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="mobile-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="mobile-title">Mobile App Development</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="mobile-description">
+              Native and cross-platform mobile applications for iOS and Android with modern UI/UX design and seamless user experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Key Features</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function CloudInfrastructureDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Cloud Migration Services",
+    "Infrastructure as Code (IaC)",
+    "Auto-scaling Solutions",
+    "Load Balancing",
+    "Database Optimization",
+    "Security Implementation",
+    "Monitoring & Logging",
+    "Cost Optimization",
+    "Disaster Recovery",
+    "Performance Tuning",
+    "CI/CD Pipeline Setup",
+    "Container Orchestration"
+  ];
+
+  const technologies = [
+    "AWS", "Azure", "Google Cloud", "Docker",
+    "Kubernetes", "Terraform", "Ansible", "Jenkins",
+    "CloudFormation", "Prometheus", "Grafana", "ELK Stack"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="cloud-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="cloud-title">Cloud Infrastructure Optimization</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="cloud-description">
+              Scalable cloud solutions, migration services, and infrastructure optimization for enhanced performance and cost efficiency.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Services Offered</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Cloud Technologies</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function TestAutomationDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Automated Testing Frameworks",
+    "Unit Testing",
+    "Integration Testing",
+    "End-to-End Testing",
+    "Performance Testing",
+    "Security Testing",
+    "API Testing",
+    "Mobile App Testing",
+    "Cross-browser Testing",
+    "Regression Testing",
+    "Load Testing",
+    "Continuous Integration Testing"
+  ];
+
+  const technologies = [
+    "Selenium", "Cypress", "Jest", "Mocha",
+    "Puppeteer", "Playwright", "JMeter", "Postman",
+    "TestNG", "JUnit", "Appium", "Robot Framework"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="testing-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="testing-title">Test Automation</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="testing-description">
+              Comprehensive testing frameworks, automated testing solutions, and quality assurance services to ensure software reliability.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Testing Services</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Testing Tools</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function LegalTechDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Case Management Systems",
+    "Document Automation",
+    "Contract Management",
+    "Compliance Tracking",
+    "Legal Research Tools",
+    "Client Portal Development",
+    "Billing & Time Tracking",
+    "Court Filing Systems",
+    "Legal Analytics",
+    "E-discovery Solutions",
+    "Legal Workflow Automation",
+    "Regulatory Compliance Tools"
+  ];
+
+  const technologies = [
+    "Microsoft .NET", "Java", "Python", "React",
+    "Angular", "Node.js", "PostgreSQL", "MongoDB",
+    "Elasticsearch", "AWS", "Azure", "Docker"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="legaltech-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="legaltech-title">LegalTech Solutions</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="legaltech-description">
+              Legal case management, document automation, compliance solutions, and legal workflow optimization for modern law practices.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Legal Solutions</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function WebPortalDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Enterprise Portals",
+    "Customer Portals", 
+    "Employee Portals",
+    "Partner Portals",
+    "Content Management Systems",
+    "User Authentication & Authorization",
+    "Dashboard Development",
+    "Document Management",
+    "Workflow Management",
+    "Integration Capabilities",
+    "Mobile Responsiveness",
+    "Analytics & Reporting"
+  ];
+
+  const technologies = [
+    "React", "Angular", "Vue.js", "Node.js",
+    "Express.js", "Laravel", "Django", "Spring Boot",
+    "PostgreSQL", "MongoDB", "Redis", "GraphQL"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="webportal-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="webportal-title">Web Portal Development</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="webportal-description">
+              Enterprise portals, customer portals, and content management systems with modern architecture and seamless user experience.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Portal Solutions</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function FintechDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Payment Processing Systems",
+    "Digital Banking Solutions",
+    "Financial Analytics",
+    "Risk Management Tools",
+    "Cryptocurrency Integration",
+    "Fraud Detection Systems",
+    "KYC/AML Compliance",
+    "Trading Platforms",
+    "Personal Finance Apps",
+    "Investment Management",
+    "Insurance Technology",
+    "Regulatory Reporting"
+  ];
+
+  const technologies = [
+    "Java", "Python", "Node.js", "React",
+    "Kubernetes", "Docker", "PostgreSQL", "MongoDB",
+    "Stripe", "Plaid", "AWS", "Blockchain"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="fintech-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="fintech-title">Fintech Solutions</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="fintech-description">
+              Financial applications, banking solutions, payment processing, and financial technology platforms with robust security and compliance.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Fintech Services</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+function AIDetail() {
+  const { t } = useTranslation();
+  
+  const features = [
+    "Machine Learning Models",
+    "Natural Language Processing",
+    "Computer Vision",
+    "Predictive Analytics",
+    "Chatbot Development",
+    "Recommendation Systems",
+    "Automated Decision Making",
+    "Deep Learning Solutions",
+    "AI-powered Analytics",
+    "Intelligent Automation",
+    "Neural Networks",
+    "AI Consulting Services"
+  ];
+
+  const technologies = [
+    "TensorFlow", "PyTorch", "Python", "R",
+    "Scikit-learn", "Keras", "OpenAI GPT", "Azure AI",
+    "AWS SageMaker", "Google AI Platform", "Jupyter", "Docker"
+  ];
+
+  return (
+    <div className="pt-16" data-testid="ai-service-detail">
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="mb-8">
+            <Link href="/services">
+              <Button variant="ghost" className="text-accent hover:text-accent/80 mb-4" data-testid="button-back-to-services">
+                <ArrowLeft className="mr-2 h-4 w-4" />
+                {t.common.backToServices}
+              </Button>
+            </Link>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="ai-title">AI Solutions</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="ai-description">
+              Artificial intelligence applications, machine learning models, and intelligent automation solutions to transform your business processes.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">AI Services</h3>
+              <ul className="space-y-2">
+                {features.map((feature, idx) => (
+                  <li key={idx} className="flex items-center">
+                    <i className="fas fa-check text-accent mr-2"></i> {feature}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="bg-white rounded-xl shadow-lg p-8">
+              <h3 className="text-2xl font-bold text-primary mb-4">AI Technologies</h3>
+              <div className="grid grid-cols-2 gap-3">
+                {technologies.map((tech, idx) => (
+                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
+                    <span className="font-medium">{tech}</span>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         </div>
