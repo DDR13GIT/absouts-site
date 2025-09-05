@@ -224,54 +224,64 @@ function BPOServiceDetail() {
 }
 
 function SoftwareServiceDetail() {
-  const coreServices = [
+  const { t } = useTranslation();
+
+  const serviceCards = [
     {
-      icon: "fas fa-code",
-      bgColor: "bg-primary",
-      title: "Custom Software Development",
-      description: "Tailored software solutions built to meet specific business requirements across various industries and use cases.",
-      features: [
-        "Web application development",
-        "Enterprise software solutions", 
-        "API development and integration",
-        "Database design and management"
-      ]
+      icon: "fas fa-shopping-cart",
+      title: "E-commerce Development",
+      description: "Complete e-commerce solutions with modern platforms, payment integration, and user-friendly interfaces.",
+      slug: "ecommerce",
+      bgColor: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
       icon: "fas fa-mobile-alt",
-      bgColor: "bg-secondary",
-      title: "Mobile Applications", 
-      description: "Native and cross-platform mobile app development for iOS and Android platforms.",
-      features: [
-        "iOS and Android development",
-        "Cross-platform solutions",
-        "App store optimization",
-        "Mobile app maintenance"
-      ]
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications for iOS and Android with modern UI/UX design.",
+      slug: "mobile",
+      bgColor: "bg-gradient-to-br from-green-500 to-green-600"
     },
     {
       icon: "fas fa-cloud",
-      bgColor: "bg-accent",
       title: "Cloud Infrastructure Optimization",
-      description: "Scalable cloud solutions and infrastructure optimization for improved performance and cost efficiency.",
-      features: [
-        "Cloud migration services", 
-        "Infrastructure as Code (IaC)",
-        "Performance optimization",
-        "Cost optimization strategies"
-      ]
+      description: "Scalable cloud solutions, migration services, and infrastructure optimization for enhanced performance.",
+      slug: "cloud",
+      bgColor: "bg-gradient-to-br from-purple-500 to-purple-600"
     },
     {
-      icon: "fas fa-robot", 
-      bgColor: "bg-primary",
+      icon: "fas fa-robot",
       title: "Test Automation",
-      description: "Comprehensive testing solutions to ensure software quality and reliability across all platforms.",
-      features: [
-        "Automated testing frameworks",
-        "Continuous integration testing",
-        "Performance testing", 
-        "Security testing"
-      ]
+      description: "Comprehensive testing frameworks, automated testing solutions, and quality assurance services.",
+      slug: "testing",
+      bgColor: "bg-gradient-to-br from-red-500 to-red-600"
+    },
+    {
+      icon: "fas fa-balance-scale",
+      title: "LegalTech Solutions",
+      description: "Legal case management, document automation, compliance solutions, and legal workflow optimization.",
+      slug: "legaltech",
+      bgColor: "bg-gradient-to-br from-indigo-500 to-indigo-600"
+    },
+    {
+      icon: "fas fa-globe",
+      title: "Web Portal Development",
+      description: "Enterprise portals, customer portals, and content management systems with modern architecture.",
+      slug: "webportal",
+      bgColor: "bg-gradient-to-br from-teal-500 to-teal-600"
+    },
+    {
+      icon: "fas fa-dollar-sign",
+      title: "Fintech Solutions",
+      description: "Financial applications, banking solutions, payment processing, and financial technology platforms.",
+      slug: "fintech",
+      bgColor: "bg-gradient-to-br from-orange-500 to-orange-600"
+    },
+    {
+      icon: "fas fa-brain",
+      title: "AI Solutions",
+      description: "Artificial intelligence applications, machine learning models, and intelligent automation solutions.",
+      slug: "ai",
+      bgColor: "bg-gradient-to-br from-pink-500 to-pink-600"
     }
   ];
 
@@ -371,22 +381,26 @@ function SoftwareServiceDetail() {
             </p>
           </div>
 
-          {/* Core Services */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
-            {coreServices.map((service, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-lg p-8" data-testid={`core-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                <div className={`w-16 h-16 ${service.bgColor} rounded-lg flex items-center justify-center mb-6`}>
-                  <i className={`${service.icon} text-2xl text-white`}></i>
+          {/* Service Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {serviceCards.map((service, index) => (
+              <div key={index} className={`group service-card ${service.bgColor} rounded-xl p-6 text-white shadow-2xl hover:shadow-3xl transform hover:-translate-y-3 hover:scale-[1.02] transition-all duration-500 cursor-pointer relative overflow-hidden`} data-testid={`service-card-${service.slug}`}>
+                {/* Background decoration */}
+                <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
+                
+                <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
+                  <i className={`${service.icon} text-2xl text-white group-hover:scale-110 transition-transform duration-300`}></i>
                 </div>
-                <h3 className="text-2xl font-bold text-primary mb-4">{service.title}</h3>
-                <p className="text-muted-foreground mb-6">{service.description}</p>
-                <ul className="space-y-2 text-sm text-muted-foreground">
-                  {service.features.map((feature, idx) => (
-                    <li key={idx} className="flex items-center">
-                      <i className="fas fa-check text-accent mr-2"></i> {feature}
-                    </li>
-                  ))}
-                </ul>
+                <h3 className="text-xl font-bold mb-3 relative z-10">{service.title}</h3>
+                <p className="text-white/90 mb-4 text-sm leading-relaxed relative z-10">
+                  {service.description}
+                </p>
+                <Link href={`/services/${service.slug}`}>
+                  <Button className="group/btn bg-white text-gray-900 hover:bg-gray-100 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300 relative z-10 w-full text-sm" data-testid={`button-see-more-${service.slug}`}>
+                    See More
+                    <span className="ml-2 group-hover/btn:translate-x-1 transition-transform duration-300">→</span>
+                  </Button>
+                </Link>
               </div>
             ))}
           </div>
