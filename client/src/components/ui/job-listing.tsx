@@ -50,13 +50,22 @@ export function JobListing({ job, onApply }: JobListingProps) {
               </span>
             </div>
           </div>
-          <Button 
-            onClick={() => onApply(job.id, job.title)} 
-            className="bg-accent hover:bg-accent/90 text-accent-foreground mt-4 md:mt-0"
-            data-testid={`button-apply-${job.id}`}
-          >
-            Apply Now
-          </Button>
+          <div className="flex gap-2 mt-4 md:mt-0">
+            <Button 
+              onClick={() => onApply(job.id, job.title)} 
+              className="bg-accent hover:bg-accent/90 text-accent-foreground"
+              data-testid={`button-apply-${job.id}`}
+            >
+              Apply Now
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => window.location.href = `/job/${job.id}`}
+              data-testid={`button-details-${job.id}`}
+            >
+              Show Details
+            </Button>
+          </div>
         </div>
       </CardHeader>
       <CardContent>

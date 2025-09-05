@@ -103,6 +103,12 @@ export async function registerRoutes(app: Express): Promise<Server> {
   // Get job listings
   app.get("/api/jobs", async (req, res) => {
     try {
+      const { getJobOpenings } = await import("./notion");
+      const jobs = await getJobOpenings();
+      res.json(jobs);
+    } catch (error) {
+      console.error("Error fetching jobs:", error);
+      // Fallback to static data if Notion fails
       const jobs = [
         {
           id: "senior-developer",
@@ -134,9 +140,23 @@ export async function registerRoutes(app: Express): Promise<Server> {
       ];
 
       res.json(jobs);
+    }
+  });
+
+  // Get specific job by ID
+  app.get("/api/jobs/:id", async (req, res) => {
+    try {
+      const { getJobById } = await import("./notion");
+      const job = await getJobById(req.params.id);
+      
+      if (!job) {
+        return res.status(404).json({ error: "Job not found" });
+      }
+      
+      res.json(job);
     } catch (error) {
-      console.error("Error fetching jobs:", error);
-      res.status(500).json({ error: "Failed to fetch job listings" });
+      console.error("Error fetching job by ID:", error);
+      res.status(500).json({ error: "Failed to fetch job details" });
     }
   });
 

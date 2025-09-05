@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { JobListing } from "@/components/ui/job-listing";
 import { JobApplicationForm } from "@/components/forms/job-application-form";
+import { PerksBenefits } from "@/components/ui/perks-benefits";
 import { useQuery } from "@tanstack/react-query";
 import { Skeleton } from "@/components/ui/skeleton";
 import { TrendingUp, Globe, Users } from "lucide-react";
@@ -197,6 +198,13 @@ export default function Career() {
               ))}
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Perks & Benefits Section */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <PerksBenefits />
         </div>
       </section>
 
