@@ -15,30 +15,55 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       {/* Hero Section */}
-      <section className="hero-image min-h-screen flex items-center justify-center text-white pt-16">
-        <div className="max-w-4xl mx-auto text-center px-4">
-          <h1 className="text-5xl md:text-6xl font-bold mb-6" data-testid="hero-title">
-            Global Outsourcing <span className="text-accent">Solutions</span>
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-200" data-testid="hero-description">
-            Empowering businesses worldwide through Cloud Accounting, BPO, and Software Development
-          </p>
-          <div className="space-x-4">
-            <Button 
-              onClick={handleExploreServices} 
-              className="bg-accent text-primary hover:bg-accent/90 px-8 py-3"
-              data-testid="button-explore-services"
-            >
-              Explore Services
-            </Button>
-            <Button 
-              onClick={handleGetStarted} 
-              variant="outline" 
-              className="border-2 border-white text-white hover:bg-white hover:text-primary px-8 py-3"
-              data-testid="button-get-started"
-            >
-              Get Started
-            </Button>
+      <section className="bg-gray-50 py-20 pt-32">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content */}
+            <div>
+              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6" data-testid="hero-title">
+                In Need of Highly Skilled Developers at a Lower Cost?
+              </h1>
+              <p className="text-lg text-muted-foreground mb-8" data-testid="hero-description">
+                We provide you with a dedicated remote development team with some of the top developers in Bangladesh!
+              </p>
+              <Button 
+                onClick={handleExploreServices} 
+                className="bg-accent text-primary hover:bg-accent/90 px-8 py-3"
+                data-testid="button-explore-services"
+              >
+                Let's talk development
+              </Button>
+            </div>
+
+            {/* Right Image */}
+            <div>
+              <img 
+                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
+                alt="Professional development team collaboration" 
+                className="rounded-lg shadow-lg w-full h-auto"
+                data-testid="hero-image"
+              />
+            </div>
+          </div>
+
+          {/* Testimonial Section */}
+          <div className="mt-20 max-w-4xl">
+            <div className="flex items-start space-x-6">
+              <div className="text-6xl text-primary font-bold leading-none">"</div>
+              <div>
+                <p className="text-lg text-muted-foreground mb-4">
+                  Cefalo understood what we were looking for and found skilled developers for us. We gained quick access to the right qualifications for the project we were about to start. It's worth its weight in gold!
+                </p>
+                <p className="text-primary font-semibold">
+                  Eivind Olsen, Director of Customer Deliveries at Prokom
+                </p>
+              </div>
+            </div>
+            <div className="flex space-x-2 mt-6">
+              <div className="w-3 h-3 bg-primary rounded-full"></div>
+              <div className="w-3 h-3 bg-primary/30 rounded-full"></div>
+              <div className="w-3 h-3 bg-primary/30 rounded-full"></div>
+            </div>
           </div>
         </div>
       </section>

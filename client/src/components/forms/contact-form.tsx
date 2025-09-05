@@ -136,7 +136,6 @@ export function ContactForm() {
                     </SelectTrigger>
                   </FormControl>
                   <SelectContent>
-                    <SelectItem value="" data-testid="service-option-none">Select a service</SelectItem>
                     <SelectItem value="bpo" data-testid="service-option-bpo">Business Process Outsourcing</SelectItem>
                     <SelectItem value="software" data-testid="service-option-software">Software Development</SelectItem>
                     <SelectItem value="accounting" data-testid="service-option-accounting">Cloud Accounting</SelectItem>
