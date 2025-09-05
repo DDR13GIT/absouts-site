@@ -44,79 +44,94 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       {/* Hero Section */}
-      <section className="bg-gray-50 py-20 pt-32">
+      <section className="bg-white py-16 pt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Left Content */}
-            <div>
-              <h1 className="text-4xl md:text-5xl font-bold text-primary mb-6" data-testid="hero-title">
-                In Need of Highly Skilled Developers at a Lower Cost?
-              </h1>
-              <p className="text-lg text-muted-foreground mb-8" data-testid="hero-description">
-                We provide you with a dedicated remote development team with some of the top developers in Bangladesh!
-              </p>
-              <Button 
-                onClick={handleExploreServices} 
-                className="bg-accent text-primary hover:bg-accent/90 px-8 py-3"
-                data-testid="button-explore-services"
-              >
-                Let's talk development
-              </Button>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+            {/* Left Content Column */}
+            <div className="space-y-8">
+              {/* Main Hero Content */}
+              <div className="space-y-6">
+                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" data-testid="hero-title">
+                  In Need of Highly Skilled Developers at a Lower Cost?
+                </h1>
+                
+                <p className="text-lg text-gray-600 leading-relaxed" data-testid="hero-description">
+                  We provide you with a dedicated remote development team with some of the 
+                  top developers in <span className="font-semibold text-primary">Bangladesh!</span>
+                </p>
+                
+                <Button 
+                  onClick={handleExploreServices} 
+                  className="bg-green-500 hover:bg-green-600 text-white px-8 py-3 text-base font-semibold rounded-md"
+                  data-testid="button-explore-services"
+                >
+                  Let's talk development
+                </Button>
+              </div>
 
-            {/* Right Image */}
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&h=600" 
-                alt="Professional development team collaboration" 
-                className="rounded-lg shadow-lg w-full h-auto"
-                data-testid="hero-image"
-              />
-            </div>
-          </div>
-
-          {/* Testimonial Carousel */}
-          <div className="mt-20 max-w-4xl">
-            <div className="relative overflow-hidden">
-              <div 
-                className="flex transition-transform duration-500 ease-in-out" 
-                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
-              >
-                {testimonials.map((testimonial, index) => (
-                  <div key={index} className="w-full flex-shrink-0">
-                    <div className="flex items-start space-x-4">
-                      <Quote className="h-12 w-12 text-primary flex-shrink-0 mt-2" />
-                      <div>
-                        <blockquote className="text-xl text-gray-700 mb-6 leading-relaxed font-medium">
-                          {testimonial.quote}
-                        </blockquote>
-                        <div className="text-left">
-                          <p className="text-lg font-semibold text-primary mb-1">
-                            {testimonial.author}
-                          </p>
-                          <p className="text-sm text-muted-foreground">
-                            {testimonial.position}
-                          </p>
+              {/* Testimonial Section */}
+              <div className="mt-12 pt-8">
+                <div className="relative overflow-hidden">
+                  {/* Testimonial Container with Carousel */}
+                  <div 
+                    className="flex transition-transform duration-500 ease-in-out"
+                    style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+                  >
+                    {testimonials.map((testimonial, index) => (
+                      <div key={index} className="w-full flex-shrink-0">
+                        <div className="bg-gray-100 p-6 rounded-tl-3xl rounded-tr-lg rounded-br-lg rounded-bl-lg relative">
+                          {/* Large Quote Marks */}
+                          <div className="text-6xl font-bold text-primary leading-none mb-4 select-none">"</div>
+                          
+                          {/* Testimonial Content */}
+                          <div className="space-y-4">
+                            <blockquote className="text-base text-gray-700 leading-relaxed">
+                              {testimonial.quote}
+                            </blockquote>
+                            
+                            <div>
+                              <p className="text-sm font-semibold text-gray-900">
+                                {testimonial.author}
+                              </p>
+                              <p className="text-sm text-gray-500">
+                                {testimonial.position}
+                              </p>
+                            </div>
+                          </div>
                         </div>
                       </div>
-                    </div>
+                    ))}
                   </div>
-                ))}
+                  
+                  {/* Carousel Indicators */}
+                  <div className="flex space-x-2 mt-6">
+                    {testimonials.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-3 h-3 rounded-full border-2 transition-all ${
+                          index === currentTestimonial 
+                            ? 'bg-primary border-primary' 
+                            : 'bg-transparent border-primary/40'
+                        }`}
+                        onClick={() => setCurrentTestimonial(index)}
+                        data-testid={`carousel-indicator-${index}`}
+                      />
+                    ))}
+                  </div>
+                </div>
               </div>
             </div>
-            
-            {/* Carousel Indicators */}
-            <div className="flex justify-center space-x-2 mt-8">
-              {testimonials.map((_, index) => (
-                <button
-                  key={index}
-                  className={`w-3 h-3 rounded-full transition-colors ${
-                    index === currentTestimonial ? 'bg-primary' : 'bg-primary/30'
-                  }`}
-                  onClick={() => setCurrentTestimonial(index)}
-                  data-testid={`carousel-indicator-${index}`}
+
+            {/* Right Image Column */}
+            <div className="lg:pl-8">
+              <div className="relative">
+                <img 
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?ixlib=rb-4.0.3&auto=format&fit=crop&w=900&h=700" 
+                  alt="Professional development team collaboration - diverse group of skilled developers working together in modern office"
+                  className="w-full h-auto rounded-lg shadow-lg"
+                  data-testid="hero-image"
                 />
-              ))}
+              </div>
             </div>
           </div>
         </div>
