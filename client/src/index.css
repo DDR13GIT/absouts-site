@@ -126,3 +126,30 @@
   transform: translateY(-4px);
   box-shadow: 0 20px 40px rgba(0,0,0,0.1);
 }
+
+/* Technology Stack Carousel Animations */
+@keyframes scroll-right-to-left {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scroll-left-to-right {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.animate-scroll-right-to-left {
+  animation: scroll-right-to-left 20s linear infinite;
+}
+
+.animate-scroll-left-to-right {
+  animation: scroll-left-to-right 20s linear infinite;
+}

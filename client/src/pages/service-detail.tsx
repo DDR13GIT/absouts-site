@@ -3,6 +3,28 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ArrowLeft } from "lucide-react";
 
+// Import technology logos
+import restApiLogo from "@assets/1_82q9fbZA3OHhyoQ48qOypQ_1757087238421.webp";
+import joutLogo from "@assets/1_XkmnsJ6Joa6EDFVGUw0tfA_1757087238421.png";
+import tensorFlowLogo from "@assets/7a11b0b0-f7b3-4c57-b79b-7ec4e27ff193_1757087238422.png";
+import angularJsLogo from "@assets/62a79606e42d729d928b175f_1757087238422.png";
+import sqlServerLogo from "@assets/6129e6c89b8f206f530029e0f221066b_1757087238422.png";
+import postgreSQLLogo from "@assets/acc45903ce91d3c1708b04a2e9d083c8_1757087238422.png";
+import awsLogo from "@assets/Amazon_Web_Services_Logo.svg_1757087238422.png";
+import jmeterLogo from "@assets/Apache_JMeter_1757087238422.png";
+import appiumLogo from "@assets/appium-logo_1757087238422.jpg";
+import aspNetLogo from "@assets/ASP.NET__1757087238422.png";
+import css3Logo from "@assets/CSS3_logo_and_wordmark.svg_1757087238423.png";
+import djangoLogo from "@assets/Daco_4430861_1757087238423.png";
+import oracleLogo from "@assets/Daco_4533338_1757087238423.png";
+import graphQLLogo from "@assets/Daco_5229551_1757087238423.png";
+import dockerLogo from "@assets/Docker_logo_1757087238423.png";
+import elasticsearchLogo from "@assets/Elasticsearch_logo.svg_1757087238423.png";
+import firebaseLogo from "@assets/Firebase_Logo.svg_1757087238423.png";
+import geminiLogo from "@assets/Gemini-Logo-500x281_1757087238423.png";
+import gitLabLogo from "@assets/GitLab_logo.svg_1757087238424.png";
+import goLogo from "@assets/Go_Logo_Blue.svg_1757087238424.png";
+
 export default function ServiceDetail() {
   const [location] = useLocation();
   const serviceType = location.includes('/bpo') ? 'bpo' : 'software';
@@ -243,13 +265,33 @@ function SoftwareServiceDetail() {
     }
   ];
 
-  const techStack = [
-    { icon: "fab fa-react", name: "React" },
-    { icon: "fab fa-node-js", name: "Node.js" },
-    { icon: "fab fa-python", name: "Python" },
-    { icon: "fab fa-java", name: "Java" },
-    { icon: "fab fa-aws", name: "AWS" },
-    { icon: "fab fa-docker", name: "Docker" }
+
+  // First row of technologies (moves right to left)
+  const techStackRow1 = [
+    { logo: restApiLogo, name: "REST API" },
+    { logo: joutLogo, name: "JOUT" },
+    { logo: tensorFlowLogo, name: "TensorFlow" },
+    { logo: angularJsLogo, name: "AngularJS" },
+    { logo: sqlServerLogo, name: "SQL Server" },
+    { logo: postgreSQLLogo, name: "PostgreSQL" },
+    { logo: awsLogo, name: "AWS" },
+    { logo: jmeterLogo, name: "Apache JMeter" },
+    { logo: appiumLogo, name: "Appium" },
+    { logo: aspNetLogo, name: "ASP.NET" }
+  ];
+
+  // Second row of technologies (moves left to right)  
+  const techStackRow2 = [
+    { logo: css3Logo, name: "CSS3" },
+    { logo: djangoLogo, name: "Django" },
+    { logo: oracleLogo, name: "Oracle" },
+    { logo: graphQLLogo, name: "GraphQL" },
+    { logo: dockerLogo, name: "Docker" },
+    { logo: elasticsearchLogo, name: "Elasticsearch" },
+    { logo: firebaseLogo, name: "Firebase" },
+    { logo: geminiLogo, name: "Gemini" },
+    { logo: gitLabLogo, name: "GitLab" },
+    { logo: goLogo, name: "Go" }
   ];
 
   const developmentProcess = [
@@ -333,17 +375,43 @@ function SoftwareServiceDetail() {
           </div>
 
           {/* Technology Stack */}
-          <div className="bg-muted rounded-xl p-8 mb-16" data-testid="technology-stack">
+          <div className="bg-muted rounded-xl p-8 mb-16 overflow-hidden" data-testid="technology-stack">
             <h2 className="text-3xl font-bold text-primary mb-8 text-center">Our Technology Stack</h2>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8 text-center">
-              {techStack.map((tech, index) => (
-                <div key={index} data-testid={`tech-${tech.name.toLowerCase()}`}>
-                  <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mx-auto mb-2">
-                    <i className={`${tech.icon} text-white`}></i>
+            
+            {/* First Row - Moving Right to Left */}
+            <div className="relative mb-8">
+              <div className="flex animate-scroll-right-to-left">
+                {[...techStackRow1, ...techStackRow1].map((tech, index) => (
+                  <div key={index} className="flex-shrink-0 mx-8 text-center" data-testid={`tech-row1-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg p-2">
+                      <img 
+                        src={tech.logo} 
+                        alt={tech.name}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <p className="text-sm font-medium text-muted-foreground whitespace-nowrap">{tech.name}</p>
                   </div>
-                  <p className="text-sm font-medium text-muted-foreground">{tech.name}</p>
-                </div>
-              ))}
+                ))}
+              </div>
+            </div>
+
+            {/* Second Row - Moving Left to Right */}
+            <div className="relative">
+              <div className="flex animate-scroll-left-to-right">
+                {[...techStackRow2, ...techStackRow2].map((tech, index) => (
+                  <div key={index} className="flex-shrink-0 mx-8 text-center" data-testid={`tech-row2-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                    <div className="w-16 h-16 bg-white rounded-lg flex items-center justify-center mx-auto mb-3 shadow-lg p-2">
+                      <img 
+                        src={tech.logo} 
+                        alt={tech.name}
+                        className="w-full h-full object-contain"
+                      />
+                    </div>
+                    <p className="text-sm font-medium text-muted-foreground whitespace-nowrap">{tech.name}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
 
