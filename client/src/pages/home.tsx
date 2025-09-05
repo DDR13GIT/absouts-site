@@ -1,9 +1,38 @@
+import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ui/service-card";
-import { Globe, Award, Shield } from "lucide-react";
+import { Globe, Award, Shield, Quote } from "lucide-react";
 
 export default function Home() {
+  const [currentTestimonial, setCurrentTestimonial] = useState(0);
+
+  const testimonials = [
+    {
+      quote: "Cefalo understood what we were looking for and found skilled developers for us. We gained quick access to the right qualifications for the project we were about to start. It's worth its weight in gold!",
+      author: "Eivind Olsen",
+      position: "Director of Customer Deliveries at Prokom"
+    },
+    {
+      quote: "Working with Absouts has been a game-changer for our business. Their team delivered exceptional results and exceeded our expectations in every way.",
+      author: "Sarah Johnson",
+      position: "CTO at TechVision Inc"
+    },
+    {
+      quote: "The quality of work and professionalism shown by the Absouts team is remarkable. They truly understand business needs and deliver solutions that work.",
+      author: "Michael Chen",
+      position: "Founder at InnovateLabs"
+    }
+  ];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [testimonials.length]);
+
   const handleExploreServices = () => {
     window.location.href = "/services";
   };
@@ -46,23 +75,48 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Testimonial Section */}
+          {/* Testimonial Carousel */}
           <div className="mt-20 max-w-4xl">
-            <div className="flex items-start space-x-6">
-              <div className="text-6xl text-primary font-bold leading-none">"</div>
-              <div>
-                <p className="text-lg text-muted-foreground mb-4">
-                  Cefalo understood what we were looking for and found skilled developers for us. We gained quick access to the right qualifications for the project we were about to start. It's worth its weight in gold!
-                </p>
-                <p className="text-primary font-semibold">
-                  Eivind Olsen, Director of Customer Deliveries at Prokom
-                </p>
+            <div className="relative overflow-hidden">
+              <div 
+                className="flex transition-transform duration-500 ease-in-out" 
+                style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
+              >
+                {testimonials.map((testimonial, index) => (
+                  <div key={index} className="w-full flex-shrink-0">
+                    <div className="flex items-start space-x-4">
+                      <Quote className="h-12 w-12 text-primary flex-shrink-0 mt-2" />
+                      <div>
+                        <blockquote className="text-xl text-gray-700 mb-6 leading-relaxed font-medium">
+                          {testimonial.quote}
+                        </blockquote>
+                        <div className="text-left">
+                          <p className="text-lg font-semibold text-primary mb-1">
+                            {testimonial.author}
+                          </p>
+                          <p className="text-sm text-muted-foreground">
+                            {testimonial.position}
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-            <div className="flex space-x-2 mt-6">
-              <div className="w-3 h-3 bg-primary rounded-full"></div>
-              <div className="w-3 h-3 bg-primary/30 rounded-full"></div>
-              <div className="w-3 h-3 bg-primary/30 rounded-full"></div>
+            
+            {/* Carousel Indicators */}
+            <div className="flex justify-center space-x-2 mt-8">
+              {testimonials.map((_, index) => (
+                <button
+                  key={index}
+                  className={`w-3 h-3 rounded-full transition-colors ${
+                    index === currentTestimonial ? 'bg-primary' : 'bg-primary/30'
+                  }`}
+                  onClick={() => setCurrentTestimonial(index)}
+                  data-testid={`carousel-indicator-${index}`}
+                />
+              ))}
             </div>
           </div>
         </div>
