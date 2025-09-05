@@ -33,18 +33,34 @@ export async function getJobOpenings() {
         
         // First try to treat it as a database
         try {
-            const targetDatabase = await notion.databases.retrieve({ database_id: NOTION_PAGE_ID });
+            // Format the ID with dashes for API calls
+            const formattedId = NOTION_PAGE_ID.replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, '$1-$2-$3-$4-$5');
+            
+            const targetDatabase = await notion.databases.retrieve({ database_id: formattedId });
             console.log("Target is a database:", targetDatabase.id);
             
-            // If it's already a database, query it directly and return the results
-            const response = await (notion as any).databases.query({
-                database_id: NOTION_PAGE_ID,
-                page_size: 100
+            // If it's already a database, query it directly using fetch
+            const response = await fetch(`https://api.notion.com/v1/databases/${formattedId}/query`, {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${process.env.NOTION_INTEGRATION_SECRET}`,
+                    'Content-Type': 'application/json',
+                    'Notion-Version': '2022-06-28'
+                },
+                body: JSON.stringify({
+                    page_size: 100
+                })
             });
             
-            console.log("Found", response.results.length, "job records in database");
+            if (!response.ok) {
+                throw new Error(`Failed to query database: ${response.statusText}`);
+            }
             
-            return response.results.map((page: any) => {
+            const data = await response.json();
+            
+            console.log("Found", data.results.length, "job records in database");
+            
+            return data.results.map((page: any) => {
                 const properties = page.properties;
                 
                 const getTextContent = (prop: any) => {
@@ -207,15 +223,18 @@ export async function getJobOpenings() {
                 }
 
                 // Now query the created database
-                const response = await (notion as any).databases.query({
-                    database_id: jobsDatabase.id,
-                    filter: {
-                        property: "Status",
-                        select: {
-                            equals: "Open"
+                const response = await notion.request({
+                    path: `databases/${jobsDatabase.id}/query`,
+                    method: 'post',
+                    body: {
+                        filter: {
+                            property: "Status",
+                            select: {
+                                equals: "Open"
+                            }
                         }
                     }
-                });
+                }) as any;
 
                 return response.results.map((page: any) => {
                     const properties = page.properties;
