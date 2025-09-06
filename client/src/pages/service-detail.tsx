@@ -26,6 +26,14 @@ import geminiLogo from "@assets/Gemini-Logo-500x281_1757087238423.png";
 import gitLabLogo from "@assets/GitLab_logo.svg_1757087238424.png";
 import goLogo from "@assets/Go_Logo_Blue.svg_1757087238424.png";
 
+// Additional logos for service cards
+import flutterLogo from "@assets/Google-flutter-logo_1757087525820.png";
+import html5Logo from "@assets/HTML5_logo_and_wordmark.svg_1757087525820.png";
+import nodeJsLogo from "@assets/Node.js_logo.svg_1757087525822.png";
+import mongoDBLogo from "@assets/MongoDB_Logo.svg_1757087525821.png";
+import pythonLogo from "@assets/Python-Logo-500x313_1757087525822.png";
+import kotlinLogo from "@assets/Kotlin_logo.svg_1757087525821.png";
+
 export default function ServiceDetail() {
   const [location] = useLocation();
   const serviceSlug = location.split('/').pop();
@@ -228,56 +236,56 @@ function SoftwareServiceDetail() {
 
   const serviceCards = [
     {
-      icon: "fas fa-shopping-cart",
+      logoSrc: mongoDBLogo,
       title: "E-commerce Development",
       description: "Complete e-commerce solutions with modern platforms, payment integration, and user-friendly interfaces.",
       slug: "ecommerce",
       bgColor: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
-      icon: "fas fa-mobile-alt",
+      logoSrc: flutterLogo,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android with modern UI/UX design.",
       slug: "mobile",
       bgColor: "bg-gradient-to-br from-green-500 to-green-600"
     },
     {
-      icon: "fas fa-cloud",
+      logoSrc: awsLogo,
       title: "Cloud Infrastructure Optimization",
       description: "Scalable cloud solutions, migration services, and infrastructure optimization for enhanced performance.",
       slug: "cloud",
       bgColor: "bg-gradient-to-br from-purple-500 to-purple-600"
     },
     {
-      icon: "fas fa-robot",
+      logoSrc: jmeterLogo,
       title: "Test Automation",
       description: "Comprehensive testing frameworks, automated testing solutions, and quality assurance services.",
       slug: "testing",
       bgColor: "bg-gradient-to-br from-red-500 to-red-600"
     },
     {
-      icon: "fas fa-balance-scale",
+      logoSrc: pythonLogo,
       title: "LegalTech Solutions",
       description: "Legal case management, document automation, compliance solutions, and legal workflow optimization.",
       slug: "legaltech",
       bgColor: "bg-gradient-to-br from-indigo-500 to-indigo-600"
     },
     {
-      icon: "fas fa-globe",
+      logoSrc: html5Logo,
       title: "Web Portal Development",
       description: "Enterprise portals, customer portals, and content management systems with modern architecture.",
       slug: "webportal",
       bgColor: "bg-gradient-to-br from-teal-500 to-teal-600"
     },
     {
-      icon: "fas fa-dollar-sign",
+      logoSrc: nodeJsLogo,
       title: "Fintech Solutions",
       description: "Financial applications, banking solutions, payment processing, and financial technology platforms.",
       slug: "fintech",
       bgColor: "bg-gradient-to-br from-orange-500 to-orange-600"
     },
     {
-      icon: "fas fa-brain",
+      logoSrc: tensorFlowLogo,
       title: "AI Solutions",
       description: "Artificial intelligence applications, machine learning models, and intelligent automation solutions.",
       slug: "ai",
@@ -287,22 +295,22 @@ function SoftwareServiceDetail() {
 
   const industries = [
     {
-      icon: "fas fa-shopping-cart",
+      logoSrc: mongoDBLogo,
       title: "E-commerce",
       description: "Online retail platforms, payment gateways, inventory management systems"
     },
     {
-      icon: "fas fa-coins",
+      logoSrc: nodeJsLogo,
       title: "Fintech", 
       description: "Financial applications, banking solutions, payment processing systems"
     },
     {
-      icon: "fas fa-gavel",
+      logoSrc: pythonLogo,
       title: "Legal Tech",
       description: "Legal case management, document automation, compliance solutions"
     },
     {
-      icon: "fas fa-globe",
+      logoSrc: html5Logo,
       title: "Web Portals",
       description: "Enterprise portals, customer portals, content management systems"
     }
@@ -389,7 +397,15 @@ function SoftwareServiceDetail() {
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
                 
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
-                  <i className={`${service.icon} text-2xl text-white group-hover:scale-110 transition-transform duration-300`}></i>
+                  {service.logoSrc ? (
+                    <img 
+                      src={service.logoSrc} 
+                      alt={`${service.title} logo`} 
+                      className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
+                    />
+                  ) : (
+                    <i className={`${service.icon} text-2xl text-white group-hover:scale-110 transition-transform duration-300`}></i>
+                  )}
                 </div>
                 <h3 className="text-xl font-bold mb-3 relative z-10">{service.title}</h3>
                 <p className="text-white/90 mb-4 text-sm leading-relaxed relative z-10">
@@ -412,7 +428,15 @@ function SoftwareServiceDetail() {
               {industries.map((industry, index) => (
                 <div key={index} className="text-center" data-testid={`industry-${industry.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    <i className={`${industry.icon} text-2xl text-white`}></i>
+                    {industry.logoSrc ? (
+                      <img 
+                        src={industry.logoSrc} 
+                        alt={`${industry.title} logo`} 
+                        className="w-10 h-10 object-contain" 
+                      />
+                    ) : (
+                      <i className={`${industry.icon} text-2xl text-white`}></i>
+                    )}
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-3">{industry.title}</h3>
                   <p className="text-muted-foreground">{industry.description}</p>
