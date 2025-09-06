@@ -1,30 +1,32 @@
 import { ContactForm } from "@/components/forms/contact-form";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Clock } from "lucide-react";
+import { useTranslation } from "@/lib/translation-context";
 
 export default function Contact() {
+  const { t } = useTranslation();
   const contactInfo = [
     {
       icon: Mail,
-      title: "Email",
+      title: t.contact.info.email,
       details: ["info@absouts.com", "business@absouts.com"]
     },
     {
       icon: Phone,
-      title: "Phone", 
+      title: t.contact.info.phone, 
       details: ["+1 (555) 123-4567", "+44 20 1234 5678"]
     },
     {
       icon: MapPin,
-      title: "Office",
+      title: t.contact.info.office,
       details: ["Dhaka, Bangladesh", "Global Service Delivery"]
     }
   ];
 
   const businessHours = [
-    { day: "Monday - Friday", hours: "9:00 AM - 6:00 PM (GMT+6)" },
-    { day: "Saturday", hours: "10:00 AM - 2:00 PM (GMT+6)" },
-    { day: "Sunday", hours: "Closed" }
+    { day: t.contact.hours.monday, hours: t.contact.hours.mondayHours },
+    { day: t.contact.hours.saturday, hours: t.contact.hours.saturdayHours },
+    { day: t.contact.hours.sunday, hours: t.contact.hours.sundayHours }
   ];
 
   return (
@@ -37,12 +39,12 @@ export default function Contact() {
           <div className="text-center mb-16 animate-in slide-in-from-bottom duration-700">
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-green-50 border border-blue-100 mb-6">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-700">Get In Touch</span>
+              <span className="text-sm font-medium text-gray-700">{t.contact.badge}</span>
             </div>
             
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="contact-title">Contact Us</h1>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="contact-title">{t.contact.title}</h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto" data-testid="contact-description">
-              Ready to transform your business with our outsourcing solutions? Get in touch with our team for a consultation.
+              {t.contact.description}
             </p>
           </div>
 
@@ -57,7 +59,7 @@ export default function Contact() {
                 {/* Hover gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 
-                <h2 className="text-2xl font-bold text-primary mb-6 group-hover:text-blue-600 transition-colors duration-300 relative z-10">Get in Touch</h2>
+                <h2 className="text-2xl font-bold text-primary mb-6 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.contact.info.title}</h2>
                 <div className="space-y-6 relative z-10">
                   {contactInfo.map((info, index) => {
                     const IconComponent = info.icon;
@@ -83,7 +85,7 @@ export default function Contact() {
                 {/* Hover gradient overlay */}
                 <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                 
-                <h2 className="text-2xl font-bold text-primary mb-6 group-hover:text-blue-600 transition-colors duration-300 relative z-10">Business Hours</h2>
+                <h2 className="text-2xl font-bold text-primary mb-6 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.contact.hours.title}</h2>
                 <div className="space-y-3 relative z-10">
                   {businessHours.map((schedule, index) => (
                     <div key={index} className="flex justify-between group-hover:translate-x-1 transition-transform duration-300" style={{ transitionDelay: `${index * 100}ms` }} data-testid={`business-hours-${schedule.day.toLowerCase().replace(/\s+/g, '-')}`}>
@@ -99,7 +101,7 @@ export default function Contact() {
                 {/* Background decoration */}
                 <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
                 
-                <h2 className="text-2xl font-bold mb-4 relative z-10">Need Immediate Assistance?</h2>
+                <h2 className="text-2xl font-bold mb-4 relative z-10">{t.contact.assistance.title}</h2>
                 <p className="text-white/90 mb-6 leading-relaxed relative z-10">
                   Our team is available for urgent inquiries and can provide quick responses to your business needs.
                 </p>

@@ -16,6 +16,7 @@ import {
   Quote
 } from "lucide-react";
 import { useState } from "react";
+import { useTranslation } from "@/lib/translation-context";
 
 interface JobDetail {
   id: string;
@@ -34,6 +35,7 @@ interface JobDetail {
 }
 
 export default function JobDetail() {
+  const { t } = useTranslation();
   const { id } = useParams();
   const [showApplicationForm, setShowApplicationForm] = useState(false);
 

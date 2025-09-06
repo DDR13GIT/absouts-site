@@ -3,8 +3,10 @@ import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ui/service-card";
 import { Globe, Award, Shield, Quote } from "lucide-react";
+import { useTranslation } from "@/lib/translation-context";
 
 export default function Home() {
+  const { t } = useTranslation();
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const testimonials = [
@@ -66,16 +68,15 @@ export default function Home() {
               <div className="space-y-6 animate-in slide-in-from-left duration-700">
                 <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-green-50 border border-blue-100 mb-4">
                   <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-gray-700">Trusted by 100+ companies</span>
+                  <span className="text-sm font-medium text-gray-700">{t.home.hero.badge}</span>
                 </div>
                 
                 <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" data-testid="hero-title">
-                  In Need of Highly Skilled Developers at a Lower Cost?
+                  {t.home.hero.title}
                 </h1>
                 
                 <p className="text-lg text-gray-600 leading-relaxed" data-testid="hero-description">
-                  We provide you with a dedicated remote development team with some of the 
-                  top developers in <span className="font-semibold text-primary">Bangladesh!</span>
+                  {t.home.hero.subtitle}
                 </p>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
@@ -84,7 +85,7 @@ export default function Home() {
                     className="group bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white px-8 py-3 text-base font-semibold rounded-lg shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-300"
                     data-testid="button-explore-services"
                   >
-                    Let's talk development
+                    {t.home.hero.startProject}
                     <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">→</span>
                   </Button>
                   
@@ -94,7 +95,7 @@ export default function Home() {
                     className="group border-2 border-primary/20 bg-white/80 backdrop-blur-sm text-primary hover:bg-primary hover:text-white px-8 py-3 text-base font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-0.5 transition-all duration-300"
                     data-testid="button-download-profile"
                   >
-                    Download company profile
+                    {t.home.hero.downloadBrochure}
                     <span className="ml-2 group-hover:translate-x-1 transition-transform duration-300">↓</span>
                   </Button>
                 </div>
@@ -184,19 +185,19 @@ export default function Home() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 mb-6">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-700">Comprehensive Solutions</span>
+              <span className="text-sm font-medium text-gray-700">{t.home.services.badge}</span>
             </div>
             
-            <h2 className="text-4xl font-bold text-primary mb-4" data-testid="services-title">Our Core Services</h2>
+            <h2 className="text-4xl font-bold text-primary mb-4" data-testid="services-title">{t.home.services.title}</h2>
             <p className="text-xl text-muted-foreground max-w-3xl mx-auto" data-testid="services-description">
-              Comprehensive outsourcing solutions designed to streamline your business operations and drive growth
+              {t.home.services.subtitle}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <ServiceCard
-              title="Business Process Outsourcing"
-              description="Streamline essential business functions including cloud accounting, payroll management, tax services, and back-office support."
+              title={t.home.services.bpo.title}
+              description={t.home.services.bpo.description}
               features={[
                 "Cloud Accounting Services",
                 "Payroll Management", 
@@ -209,8 +210,8 @@ export default function Home() {
             />
             
             <ServiceCard
-              title="Software Outsourcing & IT Solutions"
-              description="Custom software development, mobile applications, cloud infrastructure optimization, and specialized solutions for various industries."
+              title={t.home.services.software.title}
+              description={t.home.services.software.description}
               features={[
                 "Custom Software Development",
                 "Mobile Applications",
@@ -234,12 +235,12 @@ export default function Home() {
             <div>
               <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-50 to-blue-50 border border-green-100 mb-6">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gray-700">Why Choose Us</span>
+                <span className="text-sm font-medium text-gray-700">{t.about.values.badge}</span>
               </div>
               
-              <h2 className="text-4xl font-bold text-primary mb-6" data-testid="why-choose-title">Why Choose Absouts?</h2>
+              <h2 className="text-4xl font-bold text-primary mb-6" data-testid="why-choose-title">{t.career.whyChoose.title}</h2>
               <p className="text-lg text-muted-foreground mb-8" data-testid="why-choose-description">
-                With extensive experience and a commitment to excellence, we deliver integrated solutions that help businesses achieve efficiency, innovation, and growth.
+                {t.about.description}
               </p>
               
               <div className="space-y-6">
@@ -248,8 +249,8 @@ export default function Home() {
                     <Globe className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2 group-hover:text-blue-600 transition-colors duration-300">Global Reach</h3>
-                    <p className="text-muted-foreground">Serving clients across USA, UK, Europe, MENA, and globally</p>
+                    <h3 className="text-xl font-semibold text-primary mb-2 group-hover:text-blue-600 transition-colors duration-300">{t.about.values.globalPartnership.title}</h3>
+                    <p className="text-muted-foreground">{t.about.values.globalPartnership.description}</p>
                   </div>
                 </div>
 
@@ -258,8 +259,8 @@ export default function Home() {
                     <Award className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2 group-hover:text-blue-600 transition-colors duration-300">Expert Leadership</h3>
-                    <p className="text-muted-foreground">Led by chartered accountants and technology experts</p>
+                    <h3 className="text-xl font-semibold text-primary mb-2 group-hover:text-blue-600 transition-colors duration-300">{t.about.values.excellence.title}</h3>
+                    <p className="text-muted-foreground">{t.about.values.excellence.description}</p>
                   </div>
                 </div>
 
@@ -268,8 +269,8 @@ export default function Home() {
                     <Shield className="h-6 w-6 text-white" />
                   </div>
                   <div>
-                    <h3 className="text-xl font-semibold text-primary mb-2 group-hover:text-blue-600 transition-colors duration-300">Trusted Partnership</h3>
-                    <p className="text-muted-foreground">Built on integrity, excellence, and client success</p>
+                    <h3 className="text-xl font-semibold text-primary mb-2 group-hover:text-blue-600 transition-colors duration-300">{t.about.values.integrity.title}</h3>
+                    <p className="text-muted-foreground">{t.about.values.integrity.description}</p>
                   </div>
                 </div>
               </div>

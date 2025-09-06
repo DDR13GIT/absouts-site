@@ -1,36 +1,38 @@
 import { Star, Lightbulb, Handshake, Trophy, Users, Globe } from "lucide-react";
+import { useTranslation } from "@/lib/translation-context";
 
 export default function About() {
+  const { t } = useTranslation();
   const values = [
     {
       icon: Star,
-      title: "Excellence",
-      description: "We consistently deliver high-quality services, continuously improving and using best practices."
+      title: t.about.values.excellence.title,
+      description: t.about.values.excellence.description
     },
     {
       icon: Lightbulb,
-      title: "Innovation", 
-      description: "We use the latest technology and creative methods to deliver advanced solutions."
+      title: t.about.values.innovation.title, 
+      description: t.about.values.innovation.description
     },
     {
       icon: Handshake,
-      title: "Integrity",
-      description: "We always operate honestly, transparently, and responsibly, protecting client data."
+      title: t.about.values.integrity.title,
+      description: t.about.values.integrity.description
     },
     {
       icon: Trophy,
-      title: "Client Success",
-      description: "We understand our clients' unique needs and deliver solutions that directly support their business objectives."
+      title: t.about.values.clientSuccess.title,
+      description: t.about.values.clientSuccess.description
     },
     {
       icon: Users,
-      title: "Collaboration",
-      description: "We build strong relationships with clients and partners, working together towards shared success."
+      title: t.about.values.collaboration.title,
+      description: t.about.values.collaboration.description
     },
     {
       icon: Globe,
-      title: "Global Partnership",
-      description: "We are committed to building trusted, long-term relationships with clients around the world."
+      title: t.about.values.globalPartnership.title,
+      description: t.about.values.globalPartnership.description
     }
   ];
 
@@ -76,12 +78,12 @@ export default function About() {
           <div className="text-center mb-16 animate-in slide-in-from-bottom duration-700">
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-green-50 border border-blue-100 mb-6">
               <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-gray-700">Global Outsourcing Leader</span>
+              <span className="text-sm font-medium text-gray-700">{t.about.badge}</span>
             </div>
             
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="about-title">About Absouts</h1>
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="about-title">{t.about.title}</h1>
             <p className="text-xl text-muted-foreground max-w-4xl mx-auto" data-testid="about-description">
-              A global outsourcing entity focused on Cloud Accounting, Business Process Outsourcing (BPO), and Software Development & IT Solutions, simplifying business processes and technology management for clients worldwide.
+              {t.about.description}
             </p>
           </div>
 
@@ -94,9 +96,9 @@ export default function About() {
               <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
                 <i className="fas fa-bullseye text-2xl text-white group-hover:scale-110 transition-transform duration-300"></i>
               </div>
-              <h2 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">Our Mission</h2>
+              <h2 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.about.mission.title}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed relative z-10">
-                To provide integrated accounting, BPO, and software outsourcing solutions that empower businesses worldwide to operate efficiently, innovate and grow sustainably.
+                {t.about.mission.description}
               </p>
             </div>
 
@@ -107,9 +109,9 @@ export default function About() {
               <div className="w-16 h-16 bg-gradient-to-r from-secondary to-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
                 <i className="fas fa-eye text-2xl text-white group-hover:scale-110 transition-transform duration-300"></i>
               </div>
-              <h2 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">Our Vision</h2>
+              <h2 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.about.vision.title}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed relative z-10">
-                To become a trusted global leader known for solving business and technology challenges through reliable outsourcing services.
+                {t.about.vision.description}
               </p>
             </div>
           </div>
@@ -119,9 +121,9 @@ export default function About() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-green-50 to-blue-50 border border-green-100 mb-6">
                 <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gray-700">Core Values</span>
+                <span className="text-sm font-medium text-gray-700">{t.about.values.badge}</span>
               </div>
-              <h2 className="text-4xl font-bold text-primary" data-testid="values-title">Our Values</h2>
+              <h2 className="text-4xl font-bold text-primary" data-testid="values-title">{t.about.values.title}</h2>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -145,9 +147,9 @@ export default function About() {
             <div className="text-center mb-12">
               <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-purple-50 to-blue-50 border border-purple-100 mb-6">
                 <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse"></div>
-                <span className="text-sm font-medium text-gray-700">Leadership Team</span>
+                <span className="text-sm font-medium text-gray-700">{t.about.leadership.badge}</span>
               </div>
-              <h2 className="text-4xl font-bold text-primary" data-testid="leadership-title">Our Leadership</h2>
+              <h2 className="text-4xl font-bold text-primary" data-testid="leadership-title">{t.about.leadership.title}</h2>
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
@@ -178,12 +180,12 @@ export default function About() {
             {/* Hover gradient overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-green-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
             
-            <h2 className="text-3xl font-bold text-primary mb-6 group-hover:text-blue-600 transition-colors duration-300 relative z-10">Our Foundation & Partnership</h2>
+            <h2 className="text-3xl font-bold text-primary mb-6 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.about.foundation.title}</h2>
             <p className="text-muted-foreground text-lg mb-4 leading-relaxed relative z-10">
-              Absouts is owned by K D Roy & CO, a dedicated wing of the renowned Chartered Accountancy firm Adhikary Roy & Co., in strategic collaboration with LTR Consultants, a prominent consultancy and legal advisory firm based in Bangladesh.
+              {t.about.foundation.description1}
             </p>
             <p className="text-muted-foreground text-lg leading-relaxed relative z-10">
-              This partnership leverages extensive professional experience, industry leadership and an established reputation to deliver comprehensive outsourcing and consulting solutions globally.
+              {t.about.foundation.description2}
             </p>
           </div>
         </div>
