@@ -80,32 +80,32 @@ function NotFoundService() {
 function BPOServiceDetail() {
   const cloudAccountingServices = [
     {
-      icon: "fas fa-laptop",
+      logoSrc: awsLogo,
       title: "Virtual Accounting",
       description: "Remote accounting services providing flexibility and reducing need for in-house staff."
     },
     {
-      icon: "fas fa-book", 
+      logoSrc: nodeJsLogo, 
       title: "Book-keeping",
       description: "Recording financial transactions (sales, expenses, payments) for accurate financial records."
     },
     {
-      icon: "fas fa-balance-scale",
+      logoSrc: pythonLogo,
       title: "Bank Reconciliation", 
       description: "Matching company records with bank statements to ensure accuracy and detect discrepancies."
     },
     {
-      icon: "fas fa-chart-pie",
+      logoSrc: mongoDBLogo,
       title: "MIS Reporting",
       description: "Generating management reports for business insights and strategic decision-making."
     },
     {
-      icon: "fas fa-money-bill-wave",
+      logoSrc: firebaseLogo,
       title: "Accounts Payable & Receivable",
       description: "Tracking outgoing and incoming payments to maintain healthy cash flow."
     },
     {
-      icon: "fas fa-boxes",
+      logoSrc: dockerLogo,
       title: "Inventory Management", 
       description: "Monitoring stock levels and tracking purchases/sales for efficient supply chain operations."
     }
@@ -146,7 +146,15 @@ function BPOServiceDetail() {
               {cloudAccountingServices.map((service, index) => (
                 <div key={index} className="bg-muted rounded-xl p-6" data-testid={`cloud-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                    <i className={`${service.icon} text-white`}></i>
+                    {service.logoSrc ? (
+                      <img 
+                        src={service.logoSrc} 
+                        alt={`${service.title} logo`} 
+                        className="w-8 h-8 object-contain" 
+                      />
+                    ) : (
+                      <i className={`${service.icon} text-white`}></i>
+                    )}
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-3">{service.title}</h3>
                   <p className="text-muted-foreground">{service.description}</p>
@@ -160,7 +168,11 @@ function BPOServiceDetail() {
             {/* Payroll Management */}
             <div className="bg-white rounded-xl shadow-lg p-8" data-testid="payroll-management-card">
               <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
-                <i className="fas fa-users text-2xl text-white"></i>
+                <img 
+                  src={html5Logo} 
+                  alt="Payroll Management logo" 
+                  className="w-10 h-10 object-contain" 
+                />
               </div>
               <h3 className="text-2xl font-bold text-primary mb-4">Payroll Management</h3>
               <p className="text-muted-foreground mb-6">
@@ -176,7 +188,11 @@ function BPOServiceDetail() {
             {/* Tax Services */}
             <div className="bg-white rounded-xl shadow-lg p-8" data-testid="tax-services-card">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center mb-6">
-                <i className="fas fa-calculator text-2xl text-white"></i>
+                <img 
+                  src={kotlinLogo} 
+                  alt="Tax Services logo" 
+                  className="w-10 h-10 object-contain" 
+                />
               </div>
               <h3 className="text-2xl font-bold text-primary mb-4">Tax Services</h3>
               <p className="text-muted-foreground mb-6">
