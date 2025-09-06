@@ -7,12 +7,13 @@ interface ServiceCardProps {
   title: string;
   description: string;
   features: string[];
-  icon: string;
+  icon?: string;
+  logoSrc?: string;
   variant: "primary" | "secondary" | "accent";
   onLearnMore: () => void;
 }
 
-export function ServiceCard({ title, description, features, icon, variant, onLearnMore }: ServiceCardProps) {
+export function ServiceCard({ title, description, features, icon, logoSrc, variant, onLearnMore }: ServiceCardProps) {
   const variantStyles = {
     primary: "bg-gradient-to-r from-primary to-blue-600 text-white shadow-lg",
     secondary: "bg-gradient-to-r from-secondary to-purple-600 text-white shadow-lg",
@@ -29,7 +30,11 @@ export function ServiceCard({ title, description, features, icon, variant, onLea
       
       <CardHeader className="relative z-10">
         <div className={`w-16 h-16 rounded-lg flex items-center justify-center mb-6 ${variantStyles[variant]} group-hover:scale-110 group-hover:rotate-3 transition-all duration-300`}>
-          <i className={`${icon} text-2xl group-hover:scale-110 transition-transform duration-300`}></i>
+          {logoSrc ? (
+            <img src={logoSrc} alt={`${title} logo`} className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" />
+          ) : (
+            <i className={`${icon} text-2xl group-hover:scale-110 transition-transform duration-300`}></i>
+          )}
         </div>
         <h3 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300">{title}</h3>
         <p className="text-muted-foreground mb-6 leading-relaxed">{description}</p>
