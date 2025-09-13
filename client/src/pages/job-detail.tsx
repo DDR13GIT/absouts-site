@@ -278,27 +278,7 @@ export default function JobDetail() {
                 </div>
               </div>
 
-              {/* Quick Links */}
-              <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-6 border-0">
-                <h3 className="text-lg font-semibold text-primary mb-4">Quick Links</h3>
-                <div className="space-y-3">
-                  <Link href="/about">
-                    <Button variant="outline" className="w-full justify-start" size="sm">
-                      About Absouts
-                    </Button>
-                  </Link>
-                  <Link href="/career">
-                    <Button variant="outline" className="w-full justify-start" size="sm">
-                      Other Openings
-                    </Button>
-                  </Link>
-                  <Link href="/contact">
-                    <Button variant="outline" className="w-full justify-start" size="sm">
-                      Contact Us
-                    </Button>
-                  </Link>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
