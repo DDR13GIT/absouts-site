@@ -1,8 +1,7 @@
-import { useState, useEffect } from "react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ServiceCard } from "@/components/ui/service-card";
-import { Globe, Award, Shield, Quote } from "lucide-react";
+import { Globe, Award, Shield } from "lucide-react";
 import { useTranslation } from "@/lib/translation-context";
 
 // Import icons for service cards
@@ -11,33 +10,6 @@ import gearsIcon from "@assets/Asset 5_1757767623439.png";
 
 export default function Home() {
   const { t } = useTranslation();
-  const [currentTestimonial, setCurrentTestimonial] = useState(0);
-
-  const testimonials = [
-    {
-      quote: "Cefalo understood what we were looking for and found skilled developers for us. We gained quick access to the right qualifications for the project we were about to start. It's worth its weight in gold!",
-      author: "Eivind Olsen",
-      position: "Director of Customer Deliveries at Prokom"
-    },
-    {
-      quote: "Working with Absouts has been a game-changer for our business. Their team delivered exceptional results and exceeded our expectations in every way.",
-      author: "Sarah Johnson",
-      position: "CTO at TechVision Inc"
-    },
-    {
-      quote: "The quality of work and professionalism shown by the Absouts team is remarkable. They truly understand business needs and deliver solutions that work.",
-      author: "Michael Chen",
-      position: "Founder at InnovateLabs"
-    }
-  ];
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTestimonial((prev) => (prev + 1) % testimonials.length);
-    }, 5000);
-
-    return () => clearInterval(interval);
-  }, [testimonials.length]);
 
   const handleExploreServices = () => {
     window.location.href = "/services";
@@ -120,64 +92,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Testimonial Section - Overlapping */}
-          <div className="mt-16 relative">
-            <div className="max-w-5xl mx-auto relative">
-              <div className="relative overflow-hidden">
-                {/* Testimonial Container with Carousel */}
-                <div 
-                  className="flex transition-transform duration-500 ease-in-out"
-                  style={{ transform: `translateX(-${currentTestimonial * 100}%)` }}
-                >
-                  {testimonials.map((testimonial, index) => (
-                    <div key={index} className="w-full flex-shrink-0">
-                      <div className="group bg-white/80 backdrop-blur-md border border-white/20 p-4 py-3 rounded-tl-3xl rounded-tr-lg rounded-br-lg rounded-bl-lg relative max-w-4xl mx-auto lg:mx-0 shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
-                        {/* Large Quote Marks */}
-                        <div className="text-4xl font-bold text-primary leading-none mb-2 select-none group-hover:scale-110 transition-transform duration-300">"</div>
-                        
-                        {/* Testimonial Content */}
-                        <div className="space-y-2">
-                          <blockquote className="text-sm text-gray-700 leading-relaxed">
-                            {testimonial.quote}
-                          </blockquote>
-                          
-                          <div className="flex items-center space-x-3">
-                            <div>
-                              <p className="text-xs font-semibold text-gray-900">
-                                {testimonial.author}
-                              </p>
-                              <p className="text-xs text-gray-500">
-                                {testimonial.position}
-                              </p>
-                            </div>
-                            <div className="w-8 h-8 bg-gradient-to-r from-blue-500 to-green-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                              {testimonial.author.split(' ').map(n => n[0]).join('')}
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-                
-                {/* Carousel Indicators */}
-                <div className="flex space-x-2 mt-4 justify-center lg:justify-start">
-                  {testimonials.map((_, index) => (
-                    <button
-                      key={index}
-                      className={`w-3 h-3 rounded-full border-2 transition-all duration-300 hover:scale-125 ${
-                        index === currentTestimonial 
-                          ? 'bg-primary border-primary shadow-lg' 
-                          : 'bg-transparent border-primary/40 hover:border-primary/70'
-                      }`}
-                      onClick={() => setCurrentTestimonial(index)}
-                      data-testid={`carousel-indicator-${index}`}
-                    />
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
         </div>
       </section>
 
