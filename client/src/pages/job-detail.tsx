@@ -215,7 +215,7 @@ export default function JobDetail() {
             {/* Sidebar Column */}
             <div className="space-y-6">
               {/* Job Details Card */}
-              <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-6 border-0 sticky top-8">
+              <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-6 border-0">
                 <h3 className="text-lg font-semibold text-primary mb-4">Job Details</h3>
                 
                 <div className="space-y-4">
@@ -267,7 +267,7 @@ export default function JobDetail() {
               </div>
 
               {/* Skills Tags */}
-              <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-6 border-0">
+              <div className="bg-white/70 backdrop-blur-sm rounded-xl shadow-lg p-6 border-0 lg:sticky lg:top-24 z-10">
                 <h3 className="text-lg font-semibold text-primary mb-4">Required Skills</h3>
                 <div className="flex flex-wrap gap-2" data-testid="required-skills">
                   {job.skills.map((skill, index) => (
