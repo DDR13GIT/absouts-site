@@ -26,13 +26,26 @@ import geminiLogo from "@assets/Gemini-Logo-500x281_1757087238423.png";
 import gitLabLogo from "@assets/GitLab_logo.svg_1757087238424.png";
 import goLogo from "@assets/Go_Logo_Blue.svg_1757087238424.png";
 
-// Additional logos for service cards
-import flutterLogo from "@assets/Google-flutter-logo_1757087525820.png";
-import html5Logo from "@assets/HTML5_logo_and_wordmark.svg_1757087525820.png";
-import nodeJsLogo from "@assets/Node.js_logo.svg_1757087525822.png";
-import mongoDBLogo from "@assets/MongoDB_Logo.svg_1757087525821.png";
-import pythonLogo from "@assets/Python-Logo-500x313_1757087525822.png";
-import kotlinLogo from "@assets/Kotlin_logo.svg_1757087525821.png";
+// Import new icons for service cards
+import globeIcon from "@assets/Asset 1_1757767623438.png";
+import peopleIcon from "@assets/Asset 2_1757767623439.png";
+import lightbulbIcon from "@assets/Asset 3_1757767623439.png";
+import cloudIcon from "@assets/Asset 4_1757767623439.png";
+import gearsIcon from "@assets/Asset 5_1757767623439.png";
+import thumbsUpIcon from "@assets/Asset 6_1757767623439.png";
+import buildingIcon from "@assets/Asset 7_1757767623439.png";
+import searchIcon from "@assets/Asset 8_1757767623439.png";
+import documentIcon from "@assets/Asset 9_1757767623440.png";
+import bankIcon from "@assets/Asset 10_1757767623440.png";
+import calculatorIcon from "@assets/Asset 11_1757767623440.png";
+import scaleIcon from "@assets/Asset 12_1757767623440.png";
+import handsIcon from "@assets/Asset 13_1757767623440.png";
+import shieldIcon from "@assets/Asset 14_1757767623440.png";
+import mediaIcon from "@assets/Asset 15_1757767623440.png";
+import networkIcon from "@assets/Asset 16_1757767623440.png";
+import teamIcon from "@assets/Asset 17_1757767623440.png";
+import reportIcon from "@assets/Asset 18_1757767623441.png";
+import clockIcon from "@assets/Asset 19_1757767623441.png";
 
 export default function ServiceDetail() {
   const [location] = useLocation();
@@ -80,46 +93,46 @@ function NotFoundService() {
 function BPOServiceDetail() {
   const cloudAccountingServices = [
     {
-      logoSrc: awsLogo,
+      logoSrc: cloudIcon,
       title: "Virtual Accounting",
       description: "Remote accounting services providing flexibility and reducing need for in-house staff."
     },
     {
-      logoSrc: nodeJsLogo, 
+      logoSrc: calculatorIcon, 
       title: "Book-keeping",
       description: "Recording financial transactions (sales, expenses, payments) for accurate financial records."
     },
     {
-      logoSrc: pythonLogo,
+      logoSrc: scaleIcon,
       title: "Bank Reconciliation", 
       description: "Matching company records with bank statements to ensure accuracy and detect discrepancies."
     },
     {
-      logoSrc: mongoDBLogo,
+      logoSrc: reportIcon,
       title: "MIS Reporting",
       description: "Generating management reports for business insights and strategic decision-making."
     },
     {
-      logoSrc: firebaseLogo,
+      logoSrc: bankIcon,
       title: "Accounts Payable & Receivable",
       description: "Tracking outgoing and incoming payments to maintain healthy cash flow."
     },
     {
-      logoSrc: dockerLogo,
+      logoSrc: documentIcon,
       title: "Inventory Management", 
       description: "Monitoring stock levels and tracking purchases/sales for efficient supply chain operations."
     }
   ];
 
   const imageEditingServices = [
-    { icon: "fas fa-eraser", title: "Background Removal" },
-    { icon: "fas fa-palette", title: "Color Correction" },
-    { icon: "fas fa-user", title: "Face Swapping" },
-    { icon: "fas fa-mask", title: "Image Masking" },
-    { icon: "fas fa-magic", title: "Photo Manipulation" },
-    { icon: "fas fa-sun", title: "Shadow Creation" },
-    { icon: "fas fa-mirror", title: "Reflection Creation" },
-    { icon: "fas fa-user-edit", title: "Model Touch-up" }
+    { logoSrc: shieldIcon, title: "Background Removal" },
+    { logoSrc: mediaIcon, title: "Color Correction" },
+    { logoSrc: peopleIcon, title: "Face Swapping" },
+    { logoSrc: shieldIcon, title: "Image Masking" },
+    { logoSrc: lightbulbIcon, title: "Photo Manipulation" },
+    { logoSrc: clockIcon, title: "Shadow Creation" },
+    { logoSrc: networkIcon, title: "Reflection Creation" },
+    { logoSrc: searchIcon, title: "Model Touch-up" }
   ];
 
   return (
@@ -146,15 +159,11 @@ function BPOServiceDetail() {
               {cloudAccountingServices.map((service, index) => (
                 <div key={index} className="bg-muted rounded-xl p-6" data-testid={`cloud-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="w-12 h-12 bg-primary rounded-lg flex items-center justify-center mb-4">
-                    {service.logoSrc ? (
-                      <img 
-                        src={service.logoSrc} 
-                        alt={`${service.title} logo`} 
-                        className="w-8 h-8 object-contain" 
-                      />
-                    ) : (
-                      <i className={`${service.icon} text-white`}></i>
-                    )}
+                    <img 
+                      src={service.logoSrc} 
+                      alt={`${service.title} logo`} 
+                      className="w-8 h-8 object-contain" 
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-3">{service.title}</h3>
                   <p className="text-muted-foreground">{service.description}</p>
@@ -169,7 +178,7 @@ function BPOServiceDetail() {
             <div className="bg-white rounded-xl shadow-lg p-8" data-testid="payroll-management-card">
               <div className="w-16 h-16 bg-primary rounded-lg flex items-center justify-center mb-6">
                 <img 
-                  src={html5Logo} 
+                  src={teamIcon} 
                   alt="Payroll Management logo" 
                   className="w-10 h-10 object-contain" 
                 />
@@ -189,7 +198,7 @@ function BPOServiceDetail() {
             <div className="bg-white rounded-xl shadow-lg p-8" data-testid="tax-services-card">
               <div className="w-16 h-16 bg-secondary rounded-lg flex items-center justify-center mb-6">
                 <img 
-                  src={kotlinLogo} 
+                  src={calculatorIcon} 
                   alt="Tax Services logo" 
                   className="w-10 h-10 object-contain" 
                 />
@@ -216,7 +225,11 @@ function BPOServiceDetail() {
               {imageEditingServices.map((service, index) => (
                 <div key={index} className="text-center" data-testid={`image-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <i className={`${service.icon} text-white`}></i>
+                    <img 
+                      src={service.logoSrc} 
+                      alt={`${service.title} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
                   </div>
                   <h4 className="font-semibold text-primary">{service.title}</h4>
                 </div>
@@ -252,56 +265,56 @@ function SoftwareServiceDetail() {
 
   const serviceCards = [
     {
-      logoSrc: mongoDBLogo,
+      logoSrc: globeIcon,
       title: "E-commerce Development",
       description: "Complete e-commerce solutions with modern platforms, payment integration, and user-friendly interfaces.",
       slug: "ecommerce",
       bgColor: "bg-gradient-to-br from-blue-500 to-blue-600"
     },
     {
-      logoSrc: flutterLogo,
+      logoSrc: gearsIcon,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications for iOS and Android with modern UI/UX design.",
       slug: "mobile",
       bgColor: "bg-gradient-to-br from-green-500 to-green-600"
     },
     {
-      logoSrc: awsLogo,
+      logoSrc: cloudIcon,
       title: "Cloud Infrastructure Optimization",
       description: "Scalable cloud solutions, migration services, and infrastructure optimization for enhanced performance.",
       slug: "cloud",
       bgColor: "bg-gradient-to-br from-purple-500 to-purple-600"
     },
     {
-      logoSrc: jmeterLogo,
+      logoSrc: gearsIcon,
       title: "Test Automation",
       description: "Comprehensive testing frameworks, automated testing solutions, and quality assurance services.",
       slug: "testing",
       bgColor: "bg-gradient-to-br from-red-500 to-red-600"
     },
     {
-      logoSrc: pythonLogo,
+      logoSrc: scaleIcon,
       title: "LegalTech Solutions",
       description: "Legal case management, document automation, compliance solutions, and legal workflow optimization.",
       slug: "legaltech",
       bgColor: "bg-gradient-to-br from-indigo-500 to-indigo-600"
     },
     {
-      logoSrc: html5Logo,
+      logoSrc: globeIcon,
       title: "Web Portal Development",
       description: "Enterprise portals, customer portals, and content management systems with modern architecture.",
       slug: "webportal",
       bgColor: "bg-gradient-to-br from-teal-500 to-teal-600"
     },
     {
-      logoSrc: nodeJsLogo,
+      logoSrc: bankIcon,
       title: "Fintech Solutions",
       description: "Financial applications, banking solutions, payment processing, and financial technology platforms.",
       slug: "fintech",
       bgColor: "bg-gradient-to-br from-orange-500 to-orange-600"
     },
     {
-      logoSrc: tensorFlowLogo,
+      logoSrc: lightbulbIcon,
       title: "AI Solutions",
       description: "Artificial intelligence applications, machine learning models, and intelligent automation solutions.",
       slug: "ai",
@@ -311,22 +324,22 @@ function SoftwareServiceDetail() {
 
   const industries = [
     {
-      logoSrc: mongoDBLogo,
+      logoSrc: globeIcon,
       title: "E-commerce",
       description: "Online retail platforms, payment gateways, inventory management systems"
     },
     {
-      logoSrc: nodeJsLogo,
+      logoSrc: bankIcon,
       title: "Fintech", 
       description: "Financial applications, banking solutions, payment processing systems"
     },
     {
-      logoSrc: pythonLogo,
+      logoSrc: scaleIcon,
       title: "Legal Tech",
       description: "Legal case management, document automation, compliance solutions"
     },
     {
-      logoSrc: html5Logo,
+      logoSrc: networkIcon,
       title: "Web Portals",
       description: "Enterprise portals, customer portals, content management systems"
     }
@@ -413,15 +426,11 @@ function SoftwareServiceDetail() {
                 <div className="absolute top-0 right-0 w-24 h-24 bg-white/10 rounded-bl-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
                 
                 <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
-                  {service.logoSrc ? (
-                    <img 
-                      src={service.logoSrc} 
-                      alt={`${service.title} logo`} 
-                      className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
-                    />
-                  ) : (
-                    <i className={`${service.icon} text-2xl text-white group-hover:scale-110 transition-transform duration-300`}></i>
-                  )}
+                  <img 
+                    src={service.logoSrc} 
+                    alt={`${service.title} logo`} 
+                    className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
+                  />
                 </div>
                 <h3 className="text-xl font-bold mb-3 relative z-10">{service.title}</h3>
                 <p className="text-white/90 mb-4 text-sm leading-relaxed relative z-10">
@@ -444,15 +453,11 @@ function SoftwareServiceDetail() {
               {industries.map((industry, index) => (
                 <div key={index} className="text-center" data-testid={`industry-${industry.title.toLowerCase().replace(/\s+/g, '-')}`}>
                   <div className="w-16 h-16 bg-accent rounded-full flex items-center justify-center mx-auto mb-4">
-                    {industry.logoSrc ? (
-                      <img 
-                        src={industry.logoSrc} 
-                        alt={`${industry.title} logo`} 
-                        className="w-10 h-10 object-contain" 
-                      />
-                    ) : (
-                      <i className={`${industry.icon} text-2xl text-white`}></i>
-                    )}
+                    <img 
+                      src={industry.logoSrc} 
+                      alt={`${industry.title} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
                   </div>
                   <h3 className="text-xl font-semibold text-primary mb-3">{industry.title}</h3>
                   <p className="text-muted-foreground">{industry.description}</p>

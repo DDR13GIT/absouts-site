@@ -5,9 +5,9 @@ import { ServiceCard } from "@/components/ui/service-card";
 import { Globe, Award, Shield, Quote } from "lucide-react";
 import { useTranslation } from "@/lib/translation-context";
 
-// Import logos for service cards
-import awsLogo from "@assets/Amazon_Web_Services_Logo.svg_1757087238422.png";
-import nodeJsLogo from "@assets/Node.js_logo.svg_1757087525822.png";
+// Import icons for service cards
+import peopleIcon from "@assets/Asset 17_1757767623440.png";
+import gearsIcon from "@assets/Asset 5_1757767623439.png";
 
 export default function Home() {
   const { t } = useTranslation();
@@ -208,7 +208,7 @@ export default function Home() {
                 "Tax Services",
                 "Image Editing"
               ]}
-              logoSrc={awsLogo}
+              logoSrc={peopleIcon}
               variant="primary"
               onLearnMore={() => window.location.href = "/services/bpo"}
             />
@@ -222,7 +222,7 @@ export default function Home() {
                 "Cloud Infrastructure",
                 "Test Automation"
               ]}
-              logoSrc={nodeJsLogo}
+              logoSrc={gearsIcon}
               variant="secondary"
               onLearnMore={() => window.location.href = "/services/software"}
             />
