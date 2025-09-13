@@ -1,6 +1,16 @@
 import { Star, Lightbulb, Handshake, Trophy, Users, Globe } from "lucide-react";
 import { useTranslation } from "@/lib/translation-context";
 
+// Import leadership team photos
+import kdRoyPhoto from "@assets/k_d_roy_1757771450330.jpeg";
+import mohammedSharifulPhoto from "@assets/mohammed_shariful_islam_1757771450331.png";
+import pritamKumarPhoto from "@assets/pritam_kumar_das_1757771450332.png";
+import razwanKaderPhoto from "@assets/razwan_kader_1757771450332.png";
+
+// Import custom icons for mission and vision
+import lightbulbIcon from "@assets/Asset 3_1757767623439.png";
+import globeIcon from "@assets/Asset 1_1757767623438.png";
+
 export default function About() {
   const { t } = useTranslation();
   const values = [
@@ -42,28 +52,32 @@ export default function About() {
       name: "K D Roy, FCA (ICAB), ACA (ICAEW)",
       position: "Chief Executive Officer",
       description: "Leads the entity by setting its overall direction and goals. Responsible for developing new business opportunities worldwide and ensuring that the entity's activities support both its objectives and client success. Has extensive hands-on experience managing virtual accounting and payroll services for US-based companies.",
-      bgColor: "bg-primary"
+      bgColor: "bg-primary",
+      photo: kdRoyPhoto
     },
     {
       initials: "RK",
       name: "Razwan Kader",
       position: "Chief Technology Officer", 
       description: "A seasoned technology leader with deep expertise in software engineering and system architecture. Drives the company's technology vision, aligning technical strategy with business objectives. Excels at building high-performing teams and delivering scalable, reliable solutions.",
-      bgColor: "bg-secondary"
+      bgColor: "bg-secondary",
+      photo: razwanKaderPhoto
     },
     {
       initials: "SI", 
       name: "Mohammed Shariful Islam, FCA",
       position: "Chief Operating Officer",
       description: "Ensures smooth daily operations by refining processes, guiding cross-functional teams, and enforcing quality and compliance. Delivers reliable BPO and software services that drive company growth while fostering continuous improvement and accountability.",
-      bgColor: "bg-accent"
+      bgColor: "bg-accent",
+      photo: mohammedSharifulPhoto
     },
     {
       initials: "PD",
       name: "Pritam Kumar Das", 
       position: "Head of Business Development",
       description: "Drives the seamless delivery of all BPO and software solutions by overseeing every project to meet international quality and compliance standards. Closely monitors daily operations and upholds excellence so clients consistently receive reliable and efficient services.",
-      bgColor: "bg-primary"
+      bgColor: "bg-primary",
+      photo: pritamKumarPhoto
     }
   ];
 
@@ -94,7 +108,11 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-green-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               
               <div className="w-16 h-16 bg-gradient-to-r from-primary to-blue-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
-                <i className="fas fa-bullseye text-2xl text-white group-hover:scale-110 transition-transform duration-300"></i>
+                <img 
+                  src={lightbulbIcon} 
+                  alt="Mission icon" 
+                  className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
+                />
               </div>
               <h2 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.about.mission.title}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed relative z-10">
@@ -107,7 +125,11 @@ export default function About() {
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500/5 to-blue-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
               
               <div className="w-16 h-16 bg-gradient-to-r from-secondary to-purple-600 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
-                <i className="fas fa-eye text-2xl text-white group-hover:scale-110 transition-transform duration-300"></i>
+                <img 
+                  src={globeIcon} 
+                  alt="Vision icon" 
+                  className="w-10 h-10 object-contain group-hover:scale-110 transition-transform duration-300" 
+                />
               </div>
               <h2 className="text-2xl font-bold text-primary mb-4 group-hover:text-blue-600 transition-colors duration-300 relative z-10">{t.about.vision.title}</h2>
               <p className="text-muted-foreground text-lg leading-relaxed relative z-10">
@@ -159,8 +181,12 @@ export default function About() {
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 to-purple-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
                   
                   <div className="flex items-center mb-6 relative z-10">
-                    <div className={`w-20 h-20 ${leader.bgColor} rounded-full flex items-center justify-center text-white text-2xl font-bold mr-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg`}>
-                      {leader.initials}
+                    <div className="w-20 h-20 rounded-full mr-4 group-hover:scale-110 transition-all duration-300 shadow-lg overflow-hidden">
+                      <img 
+                        src={leader.photo} 
+                        alt={leader.name} 
+                        className="w-full h-full object-cover" 
+                      />
                     </div>
                     <div>
                       <h3 className="text-xl font-bold text-primary group-hover:text-blue-600 transition-colors duration-300">{leader.name}</h3>
