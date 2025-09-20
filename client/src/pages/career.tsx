@@ -22,9 +22,19 @@ export default function Career() {
   const { t } = useTranslation();
   const [selectedJob, setSelectedJob] = useState<{ id: string; title: string } | null>(null);
 
-  const { data: jobs, isLoading, error } = useQuery<Job[]>({
-    queryKey: ["/api/jobs"],
+  // Load jobs from static JSON file generated at build time
+  const { data: notionData, isLoading, error } = useQuery<{jobs: Job[], lastUpdated: string, totalJobs: number}>({
+    queryKey: ["notion-data"],
+    queryFn: async () => {
+      const response = await fetch('/notion-data.json');
+      if (!response.ok) {
+        throw new Error('Failed to load job data');
+      }
+      return response.json();
+    },
   });
+
+  const jobs = notionData?.jobs || [];
 
   const handleApplyJob = (jobId: string, jobTitle: string) => {
     setSelectedJob({ id: jobId, title: jobTitle });
