@@ -9,8 +9,8 @@ export const translations: Record<Language, TranslationKeys> = {
 };
 
 export const languages = [
-  { code: 'en' as Language, name: 'English', nativeName: 'English' },
-  { code: 'es' as Language, name: 'Spanish', nativeName: 'Español' }
+  { code: 'en' as Language, name: 'English', nativeName: 'English 🇺🇸' },
+  { code: 'es' as Language, name: 'Spanish', nativeName: 'Español 🇪🇸' }
 ];
 
 export * from './en';
