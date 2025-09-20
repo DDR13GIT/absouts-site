@@ -22,8 +22,8 @@ export default function Home() {
   const handleDownloadProfile = () => {
     // Create a link to download the PDF
     const link = document.createElement('a');
-    link.href = '/attached_assets/Absouts Booklet_1757063950321.pdf';
-    link.download = 'Absouts-Company-Profile.pdf';
+    link.href = '/attached_assets/Absouts Booklet_1758365484080.pdf';
+    link.download = 'Absouts-Booklet.pdf';
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
