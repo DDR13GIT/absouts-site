@@ -713,30 +713,63 @@ function EcommerceDetail() {
 function MobileAppDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Native iOS Development",
-    "Native Android Development", 
-    "Cross-platform Solutions",
-    "UI/UX Design",
-    "App Store Optimization",
+  const coreFeatures = [
+    {
+      icon: gearsIcon,
+      title: "Native iOS Development",
+      description: "High-performance iOS applications built with Swift and Objective-C for optimal user experience and device integration."
+    },
+    {
+      icon: gearsIcon,
+      title: "Native Android Development",
+      description: "Feature-rich Android applications developed with Kotlin and Java, leveraging the latest Android SDK capabilities."
+    },
+    {
+      icon: globeIcon,
+      title: "Cross-platform Solutions",
+      description: "Unified codebase apps using React Native and Flutter for faster development and consistent user experience across platforms."
+    },
+    {
+      icon: peopleIcon,
+      title: "UI/UX Design",
+      description: "Intuitive and engaging mobile interfaces designed following platform-specific guidelines and user experience best practices."
+    },
+    {
+      icon: searchIcon,
+      title: "App Store Optimization",
+      description: "Strategic optimization for app store visibility, including metadata, screenshots, and keyword optimization."
+    },
+    {
+      icon: networkIcon,
+      title: "API Integration",
+      description: "Seamless integration with third-party services, RESTful APIs, and backend systems for enhanced functionality."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "React Native", icon: restApiLogo, description: "Cross-platform mobile framework" },
+    { name: "Firebase", icon: firebaseLogo, description: "Backend-as-a-Service platform" },
+    { name: "AWS Mobile", icon: awsLogo, description: "Cloud mobile development platform" },
+    { name: "Docker", icon: dockerLogo, description: "Containerization for mobile backends" },
+    { name: "GraphQL", icon: graphQLLogo, description: "API query language for mobile" },
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "Reliable mobile app database" },
+    { name: "TensorFlow", icon: tensorFlowLogo, description: "Machine learning for mobile" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "Search and analytics engine" }
+  ];
+
+  const additionalFeatures = [
     "Push Notifications",
-    "Offline Functionality",
-    "API Integration",
+    "Offline Functionality", 
     "In-app Purchases",
     "Social Media Integration",
     "Analytics Integration",
     "App Maintenance & Updates"
   ];
 
-  const technologies = [
-    "React Native", "Flutter", "Swift", "Kotlin",
-    "Java", "Objective-C", "Xamarin", "Firebase",
-    "AWS Mobile", "App Store Connect", "Google Play Console"
-  ];
-
   return (
     <div className="pt-16" data-testid="mobile-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -745,34 +778,98 @@ function MobileAppDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="mobile-title">Mobile App Development</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="mobile-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-green-600 via-emerald-600 to-teal-600 bg-clip-text text-transparent mb-6" data-testid="mobile-title">
+                Mobile App Development
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-green-400/20 to-teal-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="mobile-description">
               Native and cross-platform mobile applications for iOS and Android with modern UI/UX design and seamless user experience.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Key Features</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-4">
+              Mobile App Development Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Complete mobile development solutions from concept to deployment across iOS and Android platforms
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/5 via-emerald-500/5 to-teal-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-green-500 to-teal-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-green-400/20 to-teal-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-green-50 to-teal-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-green-500 to-teal-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-green-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-green-600 to-teal-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Modern frameworks and tools for building scalable, performant mobile applications
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
