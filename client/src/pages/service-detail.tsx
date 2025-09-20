@@ -47,6 +47,22 @@ import teamIcon from "@assets/Asset 17_1757767623440.png";
 import reportIcon from "@assets/Asset 18_1757767623441.png";
 import clockIcon from "@assets/Asset 19_1757767623441.png";
 
+// Import image editing before/after examples
+import carReflectionEdit from "@assets/41132442914_06159af27b_1758366312455.jpg";
+import carSpotRepair from "@assets/before-after-spot-repairs-chatham1_1758366312455.jpg";
+import shoeRepair from "@assets/beforeandafter-louboutins-vibrams-resole_1758366312455.jpg";
+import backgroundRemovalExample from "@assets/bg-removal-slider-v2artboard-1-copy_1758366312456.png";
+import clothingEdit from "@assets/erbysozejtnpt7rhy7fn_1758366312456.jpg";
+import jewelryRetouch from "@assets/high-end-jewelry-retouch-touch-up-jewelry-retouching-high-quality_1758366312456.jpg";
+import chairBackgroundRemoval from "@assets/how-to-edit-product-photos-in-photoshop-remove-the-background_1758366312456.webp";
+import imageMaskingExample from "@assets/Image-Masking-Service-4_1758366312456.jpg";
+import multiPathService from "@assets/Malti-path-Services2_1758366312457.jpg";
+import photoManipulation from "@assets/maxresdefault (18)_1758366312457.jpg";
+import photoRetouching from "@assets/Photo-Retouching-Service-at-Adept-Clipping-Path_1758366312457.jpg";
+import faceSwapping from "@assets/Photoshop-Swapping-Facesa_1758366312457.jpg";
+import colorCorrection from "@assets/unnamed (10)_1758366312457.jpg";
+import shadowReflectionExample from "@assets/Untitled-1-26-1024x615_1758366312458.jpg";
+
 export default function ServiceDetail() {
   const [location] = useLocation();
   const serviceSlug = location.split('/').pop();
@@ -125,14 +141,62 @@ function BPOServiceDetail() {
   ];
 
   const imageEditingServices = [
-    { logoSrc: shieldIcon, title: "Background Removal" },
-    { logoSrc: mediaIcon, title: "Color Correction" },
-    { logoSrc: peopleIcon, title: "Face Swapping" },
-    { logoSrc: shieldIcon, title: "Image Masking" },
-    { logoSrc: lightbulbIcon, title: "Photo Manipulation" },
-    { logoSrc: clockIcon, title: "Shadow Creation" },
-    { logoSrc: networkIcon, title: "Reflection Creation" },
-    { logoSrc: searchIcon, title: "Model Touch-up" }
+    {
+      icon: searchIcon,
+      title: "Background Removal",
+      description: "Professional background removal and replacement for product photography and portraits.",
+      beforeAfterImage: backgroundRemovalExample,
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: mediaIcon,
+      title: "Color Correction",
+      description: "Advanced color grading and correction for vibrant, professional-looking images.",
+      beforeAfterImage: colorCorrection,
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: peopleIcon,
+      title: "Face Swapping",
+      description: "Seamless face replacement and digital makeup for portrait enhancement.",
+      beforeAfterImage: faceSwapping,
+      gradient: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: shieldIcon,
+      title: "Image Masking",
+      description: "Precise image masking for complex selections and detailed editing work.",
+      beforeAfterImage: imageMaskingExample,
+      gradient: "from-orange-500 to-red-500"
+    },
+    {
+      icon: lightbulbIcon,
+      title: "Photo Manipulation",
+      description: "Creative photo manipulation and artistic enhancement for stunning visual effects.",
+      beforeAfterImage: photoManipulation,
+      gradient: "from-indigo-500 to-purple-500"
+    },
+    {
+      icon: clockIcon,
+      title: "Shadow & Reflection",
+      description: "Professional shadow creation and reflection effects for product photography.",
+      beforeAfterImage: shadowReflectionExample,
+      gradient: "from-teal-500 to-blue-500"
+    },
+    {
+      icon: reportIcon,
+      title: "Photo Retouching",
+      description: "Professional photo retouching for flawless skin, beauty enhancement, and detail refinement.",
+      beforeAfterImage: photoRetouching,
+      gradient: "from-rose-500 to-pink-500"
+    },
+    {
+      icon: handsIcon,
+      title: "Product Enhancement",
+      description: "Jewelry, clothing, and product enhancement for e-commerce and marketing materials.",
+      beforeAfterImage: jewelryRetouch,
+      gradient: "from-yellow-500 to-orange-500"
+    }
   ];
 
   return (
@@ -215,25 +279,119 @@ function BPOServiceDetail() {
             </div>
           </div>
 
-          {/* Image Editing Services */}
+          {/* Image Editing Services - Redesigned */}
           <div className="mb-16">
-            <h2 className="text-3xl font-bold text-primary mb-8" data-testid="image-editing-title">Image Editing Services</h2>
-            <p className="text-lg text-muted-foreground mb-8" data-testid="image-editing-description">
-              Enhancing and manipulating images for various business needs, especially in marketing and e-commerce to create visually appealing and professional imagery.
-            </p>
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-              {imageEditingServices.map((service, index) => (
-                <div key={index} className="text-center" data-testid={`image-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
-                  <div className="w-16 h-16 bg-accent rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <img 
-                      src={service.logoSrc} 
-                      alt={`${service.title} logo`} 
-                      className="w-10 h-10 object-contain" 
-                    />
+            <div className="text-center mb-12">
+              <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-violet-50 to-fuchsia-50 border border-violet-100 mb-6">
+                <div className="w-2 h-2 bg-violet-500 rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium text-gray-700">Professional Image Enhancement</span>
+              </div>
+              <h2 className="text-4xl font-bold bg-gradient-to-r from-violet-600 via-purple-600 to-fuchsia-600 bg-clip-text text-transparent mb-4" data-testid="image-editing-title">
+                Image Editing Services
+              </h2>
+              <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed" data-testid="image-editing-description">
+                Professional image enhancement and manipulation services for marketing, e-commerce, and branding needs with stunning before/after results.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {imageEditingServices.map((service, index) => {
+                const gradientStyle = {
+                  background: service.gradient === 'from-blue-500 to-cyan-500' ? 'linear-gradient(135deg, #3b82f6, #06b6d4)' :
+                             service.gradient === 'from-purple-500 to-pink-500' ? 'linear-gradient(135deg, #a855f7, #ec4899)' :
+                             service.gradient === 'from-green-500 to-emerald-500' ? 'linear-gradient(135deg, #22c55e, #10b981)' :
+                             service.gradient === 'from-orange-500 to-red-500' ? 'linear-gradient(135deg, #f97316, #ef4444)' :
+                             service.gradient === 'from-indigo-500 to-purple-500' ? 'linear-gradient(135deg, #6366f1, #a855f7)' :
+                             service.gradient === 'from-teal-500 to-blue-500' ? 'linear-gradient(135deg, #14b8a6, #3b82f6)' :
+                             service.gradient === 'from-rose-500 to-pink-500' ? 'linear-gradient(135deg, #f43f5e, #ec4899)' :
+                             'linear-gradient(135deg, #eab308, #f97316)' // yellow-orange fallback
+                };
+                
+                return (
+                  <div key={index} className="group relative rounded-2xl p-1 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2" 
+                       style={gradientStyle}
+                       data-testid={`image-service-${service.title.toLowerCase().replace(/\s+/g, '-')}`} 
+                       data-gradient-border="true">
+                    {/* Inner content container */}
+                    <div className="bg-white rounded-2xl p-6 h-full relative overflow-hidden" data-testid={`image-service-content-${service.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                    {/* Background decoration */}
+                    <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-bl from-gray-100/50 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                    
+                    {/* Service Icon */}
+                    <div className="w-14 h-14 rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10"
+                         style={gradientStyle}>
+                      <img 
+                        src={service.icon} 
+                        alt={`${service.title} icon`} 
+                        className="w-7 h-7 object-contain filter brightness-0 invert" 
+                      />
+                    </div>
+
+                    {/* Service Title */}
+                    <h4 className="text-lg font-bold text-gray-900 mb-3 relative z-10">{service.title}</h4>
+                    
+                    {/* Service Description */}
+                    <p className="text-sm text-gray-600 mb-4 leading-relaxed relative z-10">{service.description}</p>
+
+                    {/* Before/After Preview */}
+                    <div className="relative rounded-lg overflow-hidden shadow-md group-hover:shadow-lg transition-shadow duration-300 relative z-10">
+                      <img 
+                        src={service.beforeAfterImage} 
+                        alt={`${service.title} before and after example`} 
+                        className="w-full h-32 object-cover group-hover:scale-105 transition-transform duration-500" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <div className="absolute bottom-2 left-2 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-medium text-gray-800 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        Before & After
+                      </div>
+                    </div>
+
+                    {/* Hover indicator */}
+                    <div className="absolute bottom-4 right-4 w-6 h-6 bg-gradient-to-br from-gray-200 to-gray-300 rounded-full opacity-0 group-hover:opacity-100 transition-all duration-300 transform scale-0 group-hover:scale-100">
+                      <div className="w-full h-full bg-gradient-to-br from-white to-gray-100 rounded-full m-0.5"></div>
+                    </div>
                   </div>
-                  <h4 className="font-semibold text-primary">{service.title}</h4>
                 </div>
-              ))}
+                );
+              })}
+            </div>
+
+            {/* Additional Services Showcase */}
+            <div className="mt-12 bg-gradient-to-r from-violet-50 via-purple-50 to-fuchsia-50 rounded-2xl p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold bg-gradient-to-r from-violet-600 to-fuchsia-600 bg-clip-text text-transparent mb-4">
+                  Advanced Image Editing Capabilities
+                </h3>
+                <p className="text-gray-600 max-w-2xl mx-auto">
+                  Our expert team delivers professional-grade image editing with attention to detail and creative excellence
+                </p>
+              </div>
+              
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white/90 transition-all duration-300 hover:shadow-lg">
+                  <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <img src={lightbulbIcon} alt="Creative editing" className="w-6 h-6 object-contain filter brightness-0 invert" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Creative Enhancement</h4>
+                  <p className="text-sm text-gray-600">Artistic manipulation and creative effects for unique visual storytelling</p>
+                </div>
+                
+                <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white/90 transition-all duration-300 hover:shadow-lg">
+                  <div className="w-12 h-12 bg-gradient-to-br from-green-500 to-emerald-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <img src={clockIcon} alt="Fast turnaround" className="w-6 h-6 object-contain filter brightness-0 invert" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Fast Turnaround</h4>
+                  <p className="text-sm text-gray-600">Quick delivery without compromising on quality and attention to detail</p>
+                </div>
+                
+                <div className="text-center p-6 bg-white/70 backdrop-blur-sm rounded-xl hover:bg-white/90 transition-all duration-300 hover:shadow-lg">
+                  <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-500 rounded-lg flex items-center justify-center mx-auto mb-4">
+                    <img src={shieldIcon} alt="Quality assurance" className="w-6 h-6 object-contain filter brightness-0 invert" />
+                  </div>
+                  <h4 className="font-semibold text-gray-900 mb-2">Quality Assurance</h4>
+                  <p className="text-sm text-gray-600">Multiple quality checks ensure pixel-perfect results for every project</p>
+                </div>
+              </div>
             </div>
           </div>
 
