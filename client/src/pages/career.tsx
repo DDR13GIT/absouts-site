@@ -16,6 +16,12 @@ interface Job {
   postedDate: string;
   description: string;
   skills: string[];
+  salary?: string;
+  experience?: string;
+  benefits?: string;
+  requirements?: string;
+  contact?: string;
+  deadline?: string | null;
 }
 
 export default function Career() {

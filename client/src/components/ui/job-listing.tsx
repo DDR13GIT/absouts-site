@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { MapPin, Briefcase, Clock } from "lucide-react";
+import { MapPin, Briefcase, Clock, DollarSign } from "lucide-react";
 
 interface JobListingProps {
   job: {
@@ -12,6 +12,12 @@ interface JobListingProps {
     postedDate: string;
     description: string;
     skills: string[];
+    salary?: string;
+    experience?: string;
+    benefits?: string;
+    requirements?: string;
+    contact?: string;
+    deadline?: string | null;
   };
   onApply: (jobId: string, jobTitle: string) => void;
 }
@@ -48,6 +54,12 @@ export function JobListing({ job, onApply }: JobListingProps) {
                 <Clock className="h-4 w-4 mr-1" />
                 {formatDate(job.postedDate)}
               </span>
+              {job.salary && (
+                <span className="flex items-center font-medium text-green-600">
+                  <DollarSign className="h-4 w-4 mr-1" />
+                  {job.salary}
+                </span>
+              )}
             </div>
           </div>
           <div className="flex gap-2 mt-4 md:mt-0">
