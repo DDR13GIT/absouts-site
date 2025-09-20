@@ -13,48 +13,18 @@ import { dirname } from 'path';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 
-// Import the Replit integration authentication method
-async function getUncachableNotionClient() {
-  const { Client } = await import('@notionhq/client');
-  
-  let connectionSettings;
-
-  async function getAccessToken() {
-    if (connectionSettings && connectionSettings.settings.expires_at && new Date(connectionSettings.settings.expires_at).getTime() > Date.now()) {
-      return connectionSettings.settings.access_token;
+// Use the existing working server method
+async function getJobOpeningsFromServer() {
+  try {
+    const response = await fetch('http://localhost:5000/api/jobs');
+    if (!response.ok) {
+      throw new Error(`Server request failed: ${response.statusText}`);
     }
-    
-    const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
-    const xReplitToken = process.env.REPL_IDENTITY 
-      ? 'repl ' + process.env.REPL_IDENTITY 
-      : process.env.WEB_REPL_RENEWAL 
-      ? 'depl ' + process.env.WEB_REPL_RENEWAL 
-      : null;
-
-    if (!xReplitToken) {
-      throw new Error('X_REPLIT_TOKEN not found for repl/depl');
-    }
-
-    connectionSettings = await fetch(
-      'https://' + hostname + '/api/v2/connection?include_secrets=true&connector_names=notion',
-      {
-        headers: {
-          'Accept': 'application/json',
-          'X_REPLIT_TOKEN': xReplitToken
-        }
-      }
-    ).then(res => res.json()).then(data => data.items?.[0]);
-
-    const accessToken = connectionSettings?.settings?.access_token || connectionSettings.settings?.oauth?.credentials?.access_token;
-
-    if (!connectionSettings || !accessToken) {
-      throw new Error('Notion not connected');
-    }
-    return accessToken;
+    return await response.json();
+  } catch (error) {
+    console.error('Failed to fetch from server:', error);
+    throw error;
   }
-
-  const accessToken = await getAccessToken();
-  return new Client({ auth: accessToken });
 }
 
 // Extract page ID from Notion URL
@@ -74,92 +44,18 @@ function extractPageIdFromUrl(pageUrl) {
   throw Error("Failed to extract page ID from URL. Please ensure you're using a valid Notion page URL.");
 }
 
-// Main function to fetch job data from Notion
+// Main function to fetch job data from Notion via server
 async function fetchJobOpenings() {
   try {
-    console.log('🔄 Fetching job openings from Notion...');
+    console.log('🔄 Fetching job openings from Notion via server...');
     
-    const notion = await getUncachableNotionClient();
+    // Use the working server endpoint
+    const jobs = await getJobOpeningsFromServer();
+    console.log(`✅ Successfully fetched ${jobs.length} job(s) from Notion database`);
     
-    // Get the page/database ID from environment (you'll need to set this)
-    const notionPageUrl = process.env.NOTION_PAGE_URL || process.env.NOTION_DATABASE_URL;
-    
-    if (!notionPageUrl) {
-      console.log('⚠️  No Notion page URL found. Using fallback static data.');
-      return getFallbackJobData();
-    }
-
-    const pageId = extractPageIdFromUrl(notionPageUrl);
-    console.log('📋 Using Notion page/database ID:', pageId);
-
-    // First try to treat it as a database
-    try {
-      const formattedId = pageId.replace(/(.{8})(.{4})(.{4})(.{4})(.{12})/, '$1-$2-$3-$4-$5');
-      
-      const targetDatabase = await notion.databases.retrieve({ database_id: formattedId });
-      console.log('✅ Found database:', targetDatabase.id);
-      
-      // Query the database
-      const response = await fetch(`https://api.notion.com/v1/databases/${formattedId}/query`, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${(await getUncachableNotionClient()).auth}`,
-          'Content-Type': 'application/json',
-          'Notion-Version': '2022-06-28'
-        },
-        body: JSON.stringify({
-          filter: {
-            property: "Status",
-            select: {
-              equals: "Open"
-            }
-          },
-          page_size: 100
-        })
-      });
-      
-      if (!response.ok) {
-        throw new Error(`Failed to query database: ${response.statusText}`);
-      }
-      
-      const data = await response.json();
-      console.log(`📊 Found ${data.results.length} job records in database`);
-      
-      return data.results.map((page) => {
-        const properties = page.properties;
-        
-        const getTextContent = (prop) => {
-          if (prop?.title) return prop.title[0]?.plain_text || "";
-          if (prop?.rich_text) return prop.rich_text[0]?.plain_text || "";
-          if (prop?.select) return prop.select.name || "";
-          return "";
-        };
-        
-        return {
-          id: page.id.replace(/-/g, ''),
-          title: getTextContent(properties.Title) || "Untitled Position",
-          location: getTextContent(properties.Location) || "Remote",
-          type: getTextContent(properties.Type) || "Full-time",
-          postedDate: page.created_time.split('T')[0],
-          description: getTextContent(properties.Description) || "",
-          requirements: getTextContent(properties.Requirements) || "",
-          skills: getTextContent(properties.Skills)?.split(', ') || [],
-          benefits: getTextContent(properties.Benefits) || "",
-          salary: getTextContent(properties.Salary) || "",
-          experience: getTextContent(properties.Experience) || "",
-          contact: getTextContent(properties.Contact) || "careers@absouts.com",
-          deadline: properties.Deadline?.date?.start || null
-        };
-      });
-    } catch (dbError) {
-      console.log('ℹ️  Not a database, trying as page...');
-      
-      // If not a database, return fallback data for now
-      console.log('⚠️  Page-based setup not implemented in build script. Using fallback data.');
-      return getFallbackJobData();
-    }
+    return jobs;
   } catch (error) {
-    console.error('❌ Error fetching from Notion:', error.message);
+    console.error('❌ Error fetching from server:', error.message);
     console.log('📋 Using fallback static data');
     return getFallbackJobData();
   }

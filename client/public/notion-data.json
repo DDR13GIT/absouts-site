@@ -1,70 +1,80 @@
 {
   "jobs": [
     {
-      "id": "senior-developer",
-      "title": "Senior Software Developer",
-      "location": "Remote / Dhaka, Bangladesh",
-      "type": "Full-time",
-      "postedDate": "2025-09-20",
-      "description": "We're seeking an experienced software developer to join our development team. You'll work on custom software solutions for international clients using modern technologies.",
-      "requirements": "5+ years of experience in software development\nStrong proficiency in React, Node.js, and Python\nExperience with cloud platforms (AWS/Azure)\nExcellent problem-solving skills\nStrong communication skills in English",
+      "id": "2651595e7c8180ac9e3ad67f3733ff65",
+      "title": "Prompt Engineer",
+      "location": "Remote",
+      "type": "Full-Time",
+      "postedDate": "2025-09-05",
+      "description": "",
+      "requirements": "",
       "skills": [
-        "React",
-        "Node.js",
-        "Python",
-        "AWS",
-        "PostgreSQL",
-        "Git"
+        ""
       ],
-      "benefits": "Competitive salary and performance bonuses\nFlexible working hours and remote work options\nHealth insurance coverage\nProfessional development opportunities",
-      "salary": "$40,000 - $60,000 annually",
-      "experience": "5+ years",
+      "benefits": "",
+      "salary": "",
+      "experience": "",
       "contact": "careers@absouts.com",
       "deadline": null
     },
     {
-      "id": "cloud-accountant",
-      "title": "Cloud Accountant",
+      "id": "2651595e7c81804f9ab5eddd503ba6f8",
+      "title": "Customer Support Specialist",
       "location": "Remote",
-      "type": "Full-time",
-      "postedDate": "2025-09-20",
-      "description": "Join our accounting team to provide virtual accounting services to US and UK clients. Experience with QuickBooks and cloud accounting platforms required.",
-      "requirements": "Bachelor's degree in Accounting or Finance\n3+ years of experience in accounting\nProficiency in QuickBooks, Xero, and Excel\nKnowledge of US/UK tax regulations\nStrong attention to detail",
+      "type": "Full-Time",
+      "postedDate": "2025-09-05",
+      "description": "At Absouts, we are currently looking for a few talented and experienced full-stack JavaScript/TypeScript developers in multiple positions, including leading roles, to join our growing R&D teams. The selected software engineers will get a chance to work with the latest technology stacks, exercising industry-standard principles & best practices to build scalable, high-performance & robust software solutions for some of the big players in Europe.",
+      "requirements": "• 3 to 10 years of professional work experience in JavaScript and TypeScript-based modern web application development\n• Must have a good understanding of JavaScript, TypeScript, and ECMAScript 6 standard\n• Professional-level experience in front-end JavaScript frameworks, such as Angular or React\n• Strong understanding of front-end web architecture, component-based design, and modular development.\n• Sound knowledge of performance optimization (i.e., change detection, lazy loading) and reducing load times.\n• Clear concept of server-side rendering (SSR) and client-side rendering (CSR)\n• Solid knowledge and experience in Node.js, Express.js / Nest.js are required; a good understanding of Non-blocking IO or Async Programming is a must.\n• Proficiency in implementing RESTful APIs and web API communication is required\n• Understanding of HTML5 and CSS3 for modern, responsive front-end web application development.\n• Prior experience with JavaScript testing frameworks such as Mocha / Jest  / Karma / Jasmine is a plus.\n• Familiarity with containerization & orchestration tools (i.e., Docker, Kubernetes) and cloud services (i.e., AWS) is a plus!\n• Strong problem-solving skills and analytical abilities.\n• Fluency in written and spoken English to collaborate with foreign stakeholders and colleagues on a daily basis.",
       "skills": [
-        "QuickBooks",
-        "Xero",
-        "Excel",
-        "Tax Preparation",
-        "Financial Reporting"
+        "English Fluency"
       ],
-      "benefits": "Competitive compensation package\nWork with international clients\nCareer growth opportunities\nFlexible schedule",
-      "salary": "$30,000 - $45,000 annually",
-      "experience": "3+ years",
-      "contact": "accounting@absouts.com",
+      "benefits": "",
+      "salary": "",
+      "experience": "",
+      "contact": "careers@absouts.com",
       "deadline": null
     },
     {
-      "id": "digital-marketing",
-      "title": "Digital Marketing Specialist",
+      "id": "2651595e7c818080bceed636fbbe2f0b",
+      "title": "Senior Frontend Engineer",
       "location": "Dhaka, Bangladesh",
-      "type": "Full-time",
-      "postedDate": "2025-09-20",
-      "description": "Drive our digital marketing efforts across multiple channels. Develop and execute marketing strategies to grow our global client base.",
-      "requirements": "Bachelor's degree in Marketing or related field\n2+ years of digital marketing experience\nProficiency in Google Analytics, SEO, and social media\nExcellent written and verbal communication\nCreative thinking and analytical skills",
+      "type": "Full-Time",
+      "postedDate": "2025-09-05",
+      "description": "At Absouts, we are currently looking for a few talented and experienced full-stack JavaScript/TypeScript developers in multiple positions, including leading roles, to join our growing R&D teams. The selected software engineers will get a chance to work with the latest technology stacks, exercising industry-standard principles & best practices to build scalable, high-performance & robust software solutions for some of the big players in Europe.",
+      "requirements": "3 to 10 years of professional work experience in JavaScript and TypeScript-based modern web application development\nMust have a good understanding of JavaScript, TypeScript, and ECMAScript 6 standard\n• Professional-level experience in front-end JavaScript frameworks, such as Angular or React\n• Strong understanding of front-end web architecture, component-based design, and modular development.\n• Sound knowledge of performance optimization (i.e., change detection, lazy loading) and reducing load times.\n• Clear concept of server-side rendering (SSR) and client-side rendering (CSR)\n• Solid knowledge and experience in Node.js, Express.js / Nest.js are required; a good understanding of Non-blocking IO or Async Programming is a must.\n• Proficiency in implementing RESTful APIs and web API communication is required\n• Understanding of HTML5 and CSS3 for modern, responsive front-end web application development.\n• Prior experience with JavaScript testing frameworks such as Mocha / Jest  / Karma / Jasmine is a plus.\n• Familiarity with containerization & orchestration tools (i.e., Docker, Kubernetes) and cloud services (i.e., AWS) is a plus!\n• Strong problem-solving skills and analytical abilities.\n• Fluency in written and spoken English to collaborate with foreign stakeholders and colleagues on a daily basis.",
       "skills": [
-        "SEO",
-        "Google Analytics",
-        "Social Media Marketing",
-        "Content Creation",
-        "PPC"
+        "TypeScript",
+        "JavaScript",
+        "React",
+        "Vue",
+        "CI/CD",
+        "GCP/AWS",
+        "TailwindCSS"
       ],
-      "benefits": "Dynamic work environment\nOpportunities for creativity and innovation\nPerformance-based incentives\nTraining and certification support",
-      "salary": "$25,000 - $35,000 annually",
-      "experience": "2+ years",
-      "contact": "marketing@absouts.com",
+      "benefits": "",
+      "salary": "",
+      "experience": "",
+      "contact": "careers@absouts.com",
+      "deadline": null
+    },
+    {
+      "id": "2651595e7c81801b8725e2feef02cac6",
+      "title": "Senior Backend Engineer",
+      "location": "Dhaka, Bangladesh",
+      "type": "Full-Time",
+      "postedDate": "2025-09-05",
+      "description": "At Absouts, we are currently looking for a few talented and experienced full-stack JavaScript/TypeScript developers in multiple positions, including leading roles, to join our growing R&D teams. The selected software engineers will get a chance to work with the latest technology stacks, exercising industry-standard principles & best practices to build scalable, high-performance & robust software solutions for some of the big players in Europe.",
+      "requirements": "• 3 to 10 years of professional work experience in JavaScript and TypeScript-based modern web application development\n• Must have a good understanding of JavaScript, TypeScript, and ECMAScript 6 standard\n• Professional-level experience in front-end JavaScript frameworks, such as Angular or React\n• Strong understanding of front-end web architecture, component-based design, and modular development.\n• Sound knowledge of performance optimization (i.e., change detection, lazy loading) and reducing load times.\n• Clear concept of server-side rendering (SSR) and client-side rendering (CSR)\n• Solid knowledge and experience in Node.js, Express.js / Nest.js are required; a good understanding of Non-blocking IO or Async Programming is a must.\n• Proficiency in implementing RESTful APIs and web API communication is required\n• Understanding of HTML5 and CSS3 for modern, responsive front-end web application development.\n• Prior experience with JavaScript testing frameworks such as Mocha / Jest  / Karma / Jasmine is a plus.\n• Familiarity with containerization & orchestration tools (i.e., Docker, Kubernetes) and cloud services (i.e., AWS) is a plus!\n• Strong problem-solving skills and analytical abilities.\n• Fluency in written and spoken English to collaborate with foreign stakeholders and colleagues on a daily basis.",
+      "skills": [
+        "Go"
+      ],
+      "benefits": "",
+      "salary": "",
+      "experience": "",
+      "contact": "careers@absouts.com",
       "deadline": null
     }
   ],
-  "lastUpdated": "2025-09-20T11:58:16.324Z",
-  "totalJobs": 3
+  "lastUpdated": "2025-09-20T12:05:37.584Z",
+  "totalJobs": 4
 }
