@@ -3,7 +3,7 @@ import { useTranslation } from "@/lib/translation-context";
 
 // Import leadership team photos
 import kdRoyPhoto from "@assets/k_d_roy_1757771450330.jpeg";
-import mohammedSharifulPhoto from "@assets/mohammed_shariful_islam_1757771450331.png";
+import enamKhanPhoto from "@assets/PHOTO-2025-09-19-15-52-54_1758373122811.jpg";
 import pritamKumarPhoto from "@assets/pritam_kumar_das_1757771450332.png";
 import razwanKaderPhoto from "@assets/razwan_kader_1757771450332.png";
 
@@ -64,12 +64,12 @@ export default function About() {
       photo: razwanKaderPhoto
     },
     {
-      initials: "SI", 
-      name: "Mohammed Shariful Islam, FCA",
+      initials: "EK", 
+      name: "Enam H. Khan, FCA (ICAB), ACA (ICAEW), FCCA",
       position: "Chief Operating Officer",
       description: "Ensures smooth daily operations by refining processes, guiding cross-functional teams, and enforcing quality and compliance. Delivers reliable BPO and software services that drive company growth while fostering continuous improvement and accountability.",
       bgColor: "bg-accent",
-      photo: mohammedSharifulPhoto
+      photo: enamKhanPhoto
     },
     {
       initials: "PD",
