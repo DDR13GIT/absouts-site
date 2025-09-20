@@ -3,9 +3,6 @@ import { Button } from "@/components/ui/button";
 import { Users, ServerCog, Server, GraduationCap, Rocket, BarChart, SquareArrowOutUpLeft } from "lucide-react";
 import { useTranslation } from "@/lib/translation-context";
 
-// Import background image
-import servicesHeroBackground from "@assets/pexels-tima-miroshnichenko-6694543aa_1758365400181.jpg";
-
 export default function Services() {
   const { t } = useTranslation();
 
@@ -52,24 +49,19 @@ export default function Services() {
 
   return (
     <div className="pt-16" data-testid="services-page">
-      <section 
-        className="py-20 relative overflow-hidden bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url(${servicesHeroBackground})`
-        }}
-      >
+      <section className="py-20 bg-gradient-to-br from-slate-50 via-white to-blue-50 relative overflow-hidden">
         {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center mb-16 animate-in slide-in-from-bottom duration-700">
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-6">
-              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-              <span className="text-sm font-medium text-white">{t.services.badge}</span>
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-100 mb-6">
+              <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+              <span className="text-sm font-medium text-gray-700">{t.services.badge}</span>
             </div>
             
-            <h1 className="text-5xl font-bold text-white mb-6 drop-shadow-lg" data-testid="services-title">{t.services.title}</h1>
-            <p className="text-xl text-white/90 max-w-4xl mx-auto drop-shadow-md" data-testid="services-description">
+            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="services-title">{t.services.title}</h1>
+            <p className="text-xl text-muted-foreground max-w-4xl mx-auto" data-testid="services-description">
               {t.services.description}
             </p>
           </div>
