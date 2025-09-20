@@ -880,30 +880,63 @@ function MobileAppDetail() {
 function CloudInfrastructureDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Cloud Migration Services",
-    "Infrastructure as Code (IaC)",
-    "Auto-scaling Solutions",
-    "Load Balancing",
+  const coreFeatures = [
+    {
+      icon: cloudIcon,
+      title: "Cloud Migration Services",
+      description: "Seamless migration of on-premise infrastructure to cloud platforms with minimal downtime and maximum security."
+    },
+    {
+      icon: gearsIcon,
+      title: "Infrastructure as Code (IaC)",
+      description: "Automated infrastructure provisioning and management using Terraform, CloudFormation, and other IaC tools."
+    },
+    {
+      icon: networkIcon,
+      title: "Auto-scaling Solutions",
+      description: "Dynamic resource allocation that automatically scales infrastructure based on demand and performance metrics."
+    },
+    {
+      icon: scaleIcon,
+      title: "Load Balancing",
+      description: "Intelligent traffic distribution across multiple servers to ensure optimal performance and high availability."
+    },
+    {
+      icon: shieldIcon,
+      title: "Security Implementation",
+      description: "Comprehensive cloud security strategies including encryption, access controls, and compliance frameworks."
+    },
+    {
+      icon: reportIcon,
+      title: "Monitoring & Logging",
+      description: "Real-time infrastructure monitoring with comprehensive logging and alerting systems for proactive management."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "AWS", icon: awsLogo, description: "Amazon Web Services platform" },
+    { name: "Docker", icon: dockerLogo, description: "Containerization platform" },
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "Cloud database solution" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "Search and analytics engine" },
+    { name: "Firebase", icon: firebaseLogo, description: "Real-time cloud platform" },
+    { name: "GraphQL", icon: graphQLLogo, description: "API query language" },
+    { name: "TensorFlow", icon: tensorFlowLogo, description: "ML infrastructure platform" },
+    { name: "GitLab", icon: gitLabLogo, description: "DevOps lifecycle platform" }
+  ];
+
+  const additionalFeatures = [
     "Database Optimization",
-    "Security Implementation",
-    "Monitoring & Logging",
-    "Cost Optimization",
+    "Cost Optimization", 
     "Disaster Recovery",
     "Performance Tuning",
     "CI/CD Pipeline Setup",
     "Container Orchestration"
   ];
 
-  const technologies = [
-    "AWS", "Azure", "Google Cloud", "Docker",
-    "Kubernetes", "Terraform", "Ansible", "Jenkins",
-    "CloudFormation", "Prometheus", "Grafana", "ELK Stack"
-  ];
-
   return (
     <div className="pt-16" data-testid="cloud-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-purple-50 via-indigo-50 to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -912,34 +945,98 @@ function CloudInfrastructureDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="cloud-title">Cloud Infrastructure Optimization</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="cloud-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-purple-600 via-indigo-600 to-blue-600 bg-clip-text text-transparent mb-6" data-testid="cloud-title">
+                Cloud Infrastructure Optimization
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="cloud-description">
               Scalable cloud solutions, migration services, and infrastructure optimization for enhanced performance and cost efficiency.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Services Offered</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+              Cloud Infrastructure Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive cloud solutions designed to optimize performance, security, and cost-effectiveness
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Cloud Technologies</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 via-indigo-500/5 to-blue-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-purple-500 to-blue-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-purple-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Industry-leading cloud platforms and tools for robust infrastructure management
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -950,30 +1047,63 @@ function CloudInfrastructureDetail() {
 function TestAutomationDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Automated Testing Frameworks",
+  const coreFeatures = [
+    {
+      icon: gearsIcon,
+      title: "Automated Testing Frameworks",
+      description: "Comprehensive test automation frameworks designed to streamline testing processes and improve software quality."
+    },
+    {
+      icon: shieldIcon,
+      title: "End-to-End Testing",
+      description: "Complete user journey testing from start to finish to ensure seamless user experience across all touchpoints."
+    },
+    {
+      icon: reportIcon,
+      title: "Performance Testing",
+      description: "Load testing and performance optimization to ensure applications can handle expected user traffic and usage patterns."
+    },
+    {
+      icon: networkIcon,
+      title: "API Testing",
+      description: "Comprehensive API testing including functional, reliability, performance, and security testing of web services."
+    },
+    {
+      icon: searchIcon,
+      title: "Security Testing",
+      description: "Vulnerability assessments and security testing to identify and mitigate potential security risks and threats."
+    },
+    {
+      icon: thumbsUpIcon,
+      title: "Cross-browser Testing",
+      description: "Ensuring compatibility and consistent performance across different browsers, devices, and operating systems."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "Apache JMeter", icon: jmeterLogo, description: "Performance testing tool" },
+    { name: "Appium", icon: appiumLogo, description: "Mobile app testing framework" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "Search and analytics for logs" },
+    { name: "Docker", icon: dockerLogo, description: "Containerized testing environments" },
+    { name: "GitLab", icon: gitLabLogo, description: "CI/CD testing pipelines" },
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "Test data management" },
+    { name: "AWS", icon: awsLogo, description: "Cloud testing infrastructure" },
+    { name: "Firebase", icon: firebaseLogo, description: "Mobile testing platform" }
+  ];
+
+  const additionalFeatures = [
     "Unit Testing",
-    "Integration Testing",
-    "End-to-End Testing",
-    "Performance Testing",
-    "Security Testing",
-    "API Testing",
+    "Integration Testing", 
     "Mobile App Testing",
-    "Cross-browser Testing",
     "Regression Testing",
     "Load Testing",
     "Continuous Integration Testing"
   ];
 
-  const technologies = [
-    "Selenium", "Cypress", "Jest", "Mocha",
-    "Puppeteer", "Playwright", "JMeter", "Postman",
-    "TestNG", "JUnit", "Appium", "Robot Framework"
-  ];
-
   return (
     <div className="pt-16" data-testid="testing-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-red-50 via-pink-50 to-rose-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -982,34 +1112,98 @@ function TestAutomationDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="testing-title">Test Automation</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="testing-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-red-600 via-pink-600 to-rose-600 bg-clip-text text-transparent mb-6" data-testid="testing-title">
+                Test Automation
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-red-400/20 to-rose-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="testing-description">
               Comprehensive testing frameworks, automated testing solutions, and quality assurance services to ensure software reliability.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Testing Services</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent mb-4">
+              Quality Assurance & Testing Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive testing solutions to ensure your software meets the highest quality standards
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Testing Tools</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-red-500/5 via-pink-500/5 to-rose-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-red-500 to-rose-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-red-400/20 to-rose-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-red-50 to-rose-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-red-500 to-rose-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-red-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-red-600 to-rose-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Advanced testing tools and frameworks for comprehensive quality assurance
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1020,30 +1214,63 @@ function TestAutomationDetail() {
 function LegalTechDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Case Management Systems",
-    "Document Automation",
-    "Contract Management",
-    "Compliance Tracking",
-    "Legal Research Tools",
-    "Client Portal Development",
+  const coreFeatures = [
+    {
+      icon: scaleIcon,
+      title: "Case Management Systems",
+      description: "Comprehensive case tracking and management solutions for law firms with integrated document handling and client communication."
+    },
+    {
+      icon: documentIcon,
+      title: "Document Automation",
+      description: "Automated legal document generation, contract templates, and form filling to streamline legal document workflows."
+    },
+    {
+      icon: handsIcon,
+      title: "Contract Management",
+      description: "End-to-end contract lifecycle management from creation and negotiation to execution and renewal tracking."
+    },
+    {
+      icon: shieldIcon,
+      title: "Compliance Tracking",
+      description: "Regulatory compliance monitoring and reporting tools to ensure adherence to legal requirements and industry standards."
+    },
+    {
+      icon: searchIcon,
+      title: "Legal Research Tools",
+      description: "Advanced legal research platforms with AI-powered search capabilities and comprehensive legal database access."
+    },
+    {
+      icon: peopleIcon,
+      title: "Client Portal Development",
+      description: "Secure client portals for document sharing, case updates, communication, and billing transparency."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "ASP.NET", icon: aspNetLogo, description: "Enterprise web framework" },
+    { name: "Angular", icon: angularJsLogo, description: "Frontend web framework" },
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "Legal database management" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "Legal document search" },
+    { name: "AWS", icon: awsLogo, description: "Cloud infrastructure" },
+    { name: "Docker", icon: dockerLogo, description: "Application containerization" },
+    { name: "Firebase", icon: firebaseLogo, description: "Real-time legal data" },
+    { name: "GraphQL", icon: graphQLLogo, description: "Legal API management" }
+  ];
+
+  const additionalFeatures = [
     "Billing & Time Tracking",
-    "Court Filing Systems",
+    "Court Filing Systems", 
     "Legal Analytics",
     "E-discovery Solutions",
     "Legal Workflow Automation",
     "Regulatory Compliance Tools"
   ];
 
-  const technologies = [
-    "Microsoft .NET", "Java", "Python", "React",
-    "Angular", "Node.js", "PostgreSQL", "MongoDB",
-    "Elasticsearch", "AWS", "Azure", "Docker"
-  ];
-
   return (
     <div className="pt-16" data-testid="legaltech-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-cyan-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -1052,34 +1279,98 @@ function LegalTechDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="legaltech-title">LegalTech Solutions</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="legaltech-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-indigo-600 via-blue-600 to-cyan-600 bg-clip-text text-transparent mb-6" data-testid="legaltech-title">
+                LegalTech Solutions
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-indigo-400/20 to-cyan-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="legaltech-description">
               Legal case management, document automation, compliance solutions, and legal workflow optimization for modern law practices.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Legal Solutions</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+              LegalTech Solutions & Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive legal technology solutions designed to modernize law practices and enhance operational efficiency
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/5 via-blue-500/5 to-cyan-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-indigo-500 to-cyan-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-indigo-400/20 to-cyan-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-indigo-50 to-cyan-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-indigo-500 to-cyan-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-indigo-600 to-cyan-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Robust and secure technologies powering modern legal practice management systems
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1090,30 +1381,63 @@ function LegalTechDetail() {
 function WebPortalDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Enterprise Portals",
-    "Customer Portals", 
-    "Employee Portals",
-    "Partner Portals",
-    "Content Management Systems",
-    "User Authentication & Authorization",
+  const coreFeatures = [
+    {
+      icon: buildingIcon,
+      title: "Enterprise Portals",
+      description: "Comprehensive enterprise portal solutions with role-based access, workflow management, and integrated business processes."
+    },
+    {
+      icon: peopleIcon,
+      title: "Customer Portals",
+      description: "Self-service customer portals with account management, support ticketing, and personalized user experiences."
+    },
+    {
+      icon: teamIcon,
+      title: "Employee Portals",
+      description: "Internal employee portals with HR integration, document access, collaboration tools, and company resources."
+    },
+    {
+      icon: networkIcon,
+      title: "Partner Portals",
+      description: "Secure partner collaboration platforms with shared resources, communication tools, and business integration."
+    },
+    {
+      icon: documentIcon,
+      title: "Content Management Systems",
+      description: "Advanced CMS solutions with multi-site management, workflow approval, and dynamic content delivery."
+    },
+    {
+      icon: shieldIcon,
+      title: "User Authentication & Authorization",
+      description: "Robust security frameworks with single sign-on, multi-factor authentication, and granular permission controls."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "Angular", icon: angularJsLogo, description: "Enterprise frontend framework" },
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "Portal database management" },
+    { name: "GraphQL", icon: graphQLLogo, description: "Flexible API layer" },
+    { name: "Docker", icon: dockerLogo, description: "Portal containerization" },
+    { name: "AWS", icon: awsLogo, description: "Cloud portal hosting" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "Portal search engine" },
+    { name: "Firebase", icon: firebaseLogo, description: "Real-time portal features" },
+    { name: "GitLab", icon: gitLabLogo, description: "Portal development workflow" }
+  ];
+
+  const additionalFeatures = [
     "Dashboard Development",
-    "Document Management",
+    "Document Management", 
     "Workflow Management",
     "Integration Capabilities",
     "Mobile Responsiveness",
     "Analytics & Reporting"
   ];
 
-  const technologies = [
-    "React", "Angular", "Vue.js", "Node.js",
-    "Express.js", "Laravel", "Django", "Spring Boot",
-    "PostgreSQL", "MongoDB", "Redis", "GraphQL"
-  ];
-
   return (
     <div className="pt-16" data-testid="webportal-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-teal-50 via-cyan-50 to-emerald-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -1122,34 +1446,98 @@ function WebPortalDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="webportal-title">Web Portal Development</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="webportal-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-teal-600 via-cyan-600 to-emerald-600 bg-clip-text text-transparent mb-6" data-testid="webportal-title">
+                Web Portal Development
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-teal-400/20 to-emerald-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="webportal-description">
               Enterprise portals, customer portals, and content management systems with modern architecture and seamless user experience.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Portal Solutions</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+              Web Portal Solutions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Comprehensive portal development services designed to enhance user engagement and streamline business processes
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-teal-500/5 via-cyan-500/5 to-emerald-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-teal-500 to-emerald-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-teal-400/20 to-emerald-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-teal-50 to-emerald-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-teal-500 to-emerald-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-teal-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-teal-600 to-emerald-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Modern web technologies and frameworks for building scalable, secure portal solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1160,30 +1548,63 @@ function WebPortalDetail() {
 function FintechDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Payment Processing Systems",
-    "Digital Banking Solutions",
-    "Financial Analytics",
-    "Risk Management Tools",
+  const coreFeatures = [
+    {
+      icon: bankIcon,
+      title: "Payment Processing Systems",
+      description: "Secure, PCI-compliant payment processing solutions with support for multiple payment methods and currencies."
+    },
+    {
+      icon: calculatorIcon,
+      title: "Digital Banking Solutions",
+      description: "Complete digital banking platforms with account management, transfers, loans, and mobile banking capabilities."
+    },
+    {
+      icon: reportIcon,
+      title: "Financial Analytics",
+      description: "Advanced financial analytics and reporting tools with real-time insights, risk assessment, and performance tracking."
+    },
+    {
+      icon: shieldIcon,
+      title: "Risk Management Tools",
+      description: "Comprehensive risk assessment and management systems with fraud detection and compliance monitoring."
+    },
+    {
+      icon: networkIcon,
+      title: "Trading Platforms",
+      description: "High-performance trading platforms with real-time market data, order management, and portfolio tracking."
+    },
+    {
+      icon: scaleIcon,
+      title: "KYC/AML Compliance",
+      description: "Automated compliance solutions for Know Your Customer and Anti-Money Laundering regulatory requirements."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "Financial data management" },
+    { name: "Docker", icon: dockerLogo, description: "Secure containerization" },
+    { name: "AWS", icon: awsLogo, description: "Cloud financial infrastructure" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "Financial search & analytics" },
+    { name: "GraphQL", icon: graphQLLogo, description: "Financial API management" },
+    { name: "Firebase", icon: firebaseLogo, description: "Real-time financial data" },
+    { name: "TensorFlow", icon: tensorFlowLogo, description: "AI-powered fintech solutions" },
+    { name: "GitLab", icon: gitLabLogo, description: "Secure fintech deployment" }
+  ];
+
+  const additionalFeatures = [
     "Cryptocurrency Integration",
-    "Fraud Detection Systems",
-    "KYC/AML Compliance",
-    "Trading Platforms",
+    "Fraud Detection Systems", 
     "Personal Finance Apps",
     "Investment Management",
     "Insurance Technology",
     "Regulatory Reporting"
   ];
 
-  const technologies = [
-    "Java", "Python", "Node.js", "React",
-    "Kubernetes", "Docker", "PostgreSQL", "MongoDB",
-    "Stripe", "Plaid", "AWS", "Blockchain"
-  ];
-
   return (
     <div className="pt-16" data-testid="fintech-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -1192,34 +1613,98 @@ function FintechDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="fintech-title">Fintech Solutions</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="fintech-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-orange-600 via-amber-600 to-yellow-600 bg-clip-text text-transparent mb-6" data-testid="fintech-title">
+                Fintech Solutions
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-orange-400/20 to-yellow-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="fintech-description">
               Financial applications, banking solutions, payment processing, and financial technology platforms with robust security and compliance.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Fintech Services</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent mb-4">
+              Financial Technology Solutions
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Cutting-edge fintech solutions designed to revolutionize financial services and enhance user experience
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">Technologies</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-orange-500/5 via-amber-500/5 to-yellow-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-orange-500 to-yellow-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-orange-400/20 to-yellow-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-orange-50 to-yellow-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-orange-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-orange-600 to-yellow-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Secure and scalable technologies powering next-generation financial applications
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -1230,30 +1715,63 @@ function FintechDetail() {
 function AIDetail() {
   const { t } = useTranslation();
   
-  const features = [
-    "Machine Learning Models",
-    "Natural Language Processing",
-    "Computer Vision",
-    "Predictive Analytics",
-    "Chatbot Development",
-    "Recommendation Systems",
+  const coreFeatures = [
+    {
+      icon: lightbulbIcon,
+      title: "Machine Learning Models",
+      description: "Custom machine learning models for predictive analytics, classification, regression, and data-driven decision making."
+    },
+    {
+      icon: searchIcon,
+      title: "Natural Language Processing",
+      description: "Advanced NLP solutions for text analysis, sentiment analysis, language translation, and conversational AI systems."
+    },
+    {
+      icon: mediaIcon,
+      title: "Computer Vision",
+      description: "Image recognition, object detection, facial recognition, and visual analytics powered by deep learning algorithms."
+    },
+    {
+      icon: reportIcon,
+      title: "Predictive Analytics",
+      description: "Data-driven forecasting and trend analysis to help businesses make informed strategic decisions."
+    },
+    {
+      icon: peopleIcon,
+      title: "Chatbot Development",
+      description: "Intelligent conversational AI with natural language understanding and contextual response generation."
+    },
+    {
+      icon: thumbsUpIcon,
+      title: "Recommendation Systems",
+      description: "Personalized recommendation engines for e-commerce, content platforms, and user experience optimization."
+    }
+  ];
+
+  const technologiesData = [
+    { name: "TensorFlow", icon: tensorFlowLogo, description: "Machine learning framework" },
+    { name: "PostgreSQL", icon: postgreSQLLogo, description: "AI data management" },
+    { name: "Docker", icon: dockerLogo, description: "AI model containerization" },
+    { name: "AWS", icon: awsLogo, description: "Cloud AI infrastructure" },
+    { name: "Elasticsearch", icon: elasticsearchLogo, description: "AI-powered search" },
+    { name: "Firebase", icon: firebaseLogo, description: "Real-time AI applications" },
+    { name: "GraphQL", icon: graphQLLogo, description: "AI API management" },
+    { name: "GitLab", icon: gitLabLogo, description: "AI development workflow" }
+  ];
+
+  const additionalFeatures = [
     "Automated Decision Making",
-    "Deep Learning Solutions",
+    "Deep Learning Solutions", 
     "AI-powered Analytics",
     "Intelligent Automation",
     "Neural Networks",
     "AI Consulting Services"
   ];
 
-  const technologies = [
-    "TensorFlow", "PyTorch", "Python", "R",
-    "Scikit-learn", "Keras", "OpenAI GPT", "Azure AI",
-    "AWS SageMaker", "Google AI Platform", "Jupyter", "Docker"
-  ];
-
   return (
     <div className="pt-16" data-testid="ai-service-detail">
-      <section className="py-20 bg-white">
+      {/* Hero Section with Gradient Background */}
+      <section className="py-20 bg-gradient-to-br from-pink-50 via-rose-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mb-8">
             <Link href="/services">
@@ -1262,34 +1780,98 @@ function AIDetail() {
                 {t.common.backToServices}
               </Button>
             </Link>
-            <h1 className="text-5xl font-bold text-primary mb-6" data-testid="ai-title">AI Solutions</h1>
-            <p className="text-xl text-muted-foreground max-w-4xl" data-testid="ai-description">
+            <div className="relative">
+              <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 via-rose-600 to-purple-600 bg-clip-text text-transparent mb-6" data-testid="ai-title">
+                AI Solutions
+              </h1>
+              <div className="absolute -top-2 -left-2 w-20 h-20 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full blur-xl"></div>
+            </div>
+            <p className="text-xl text-muted-foreground max-w-4xl leading-relaxed" data-testid="ai-description">
               Artificial intelligence applications, machine learning models, and intelligent automation solutions to transform your business processes.
             </p>
           </div>
+        </div>
+      </section>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">AI Services</h3>
-              <ul className="space-y-2">
-                {features.map((feature, idx) => (
-                  <li key={idx} className="flex items-center">
-                    <i className="fas fa-check text-accent mr-2"></i> {feature}
-                  </li>
-                ))}
-              </ul>
-            </div>
+      {/* Core Features Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              Artificial Intelligence Services
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Cutting-edge AI solutions designed to transform business operations and enhance decision-making capabilities
+            </p>
+          </div>
 
-            <div className="bg-white rounded-xl shadow-lg p-8">
-              <h3 className="text-2xl font-bold text-primary mb-4">AI Technologies</h3>
-              <div className="grid grid-cols-2 gap-3">
-                {technologies.map((tech, idx) => (
-                  <div key={idx} className="bg-muted rounded-lg p-3 text-center">
-                    <span className="font-medium">{tech}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            {coreFeatures.map((feature, idx) => (
+              <div key={idx} className="group relative bg-gradient-to-br from-white to-gray-50 rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`feature-${feature.title.toLowerCase().replace(/\s+/g, '-')}`}>
+                {/* Gradient background decoration */}
+                <div className="absolute inset-0 bg-gradient-to-br from-pink-500/5 via-rose-500/5 to-purple-500/5 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div className="relative z-10">
+                  <div className="w-16 h-16 bg-gradient-to-br from-pink-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg">
+                    <img 
+                      src={feature.icon} 
+                      alt={`${feature.title} icon`} 
+                      className="w-8 h-8 object-contain filter brightness-0 invert" 
+                    />
                   </div>
-                ))}
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
+
+                {/* Corner decoration */}
+                <div className="absolute top-4 right-4 w-8 h-8 bg-gradient-to-br from-pink-400/20 to-purple-400/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
+            ))}
+          </div>
+
+          {/* Additional Features */}
+          <div className="bg-gradient-to-r from-pink-50 to-purple-50 rounded-2xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Additional Features</h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {additionalFeatures.map((feature, idx) => (
+                <div key={idx} className="flex items-center bg-white rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow duration-300" data-testid={`additional-feature-${feature.toLowerCase().replace(/\s+/g, '-')}`}>
+                  <div className="w-2 h-2 bg-gradient-to-r from-pink-500 to-purple-600 rounded-full mr-3"></div>
+                  <span className="font-medium text-gray-800">{feature}</span>
+                </div>
+              ))}
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Technologies Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-pink-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold bg-gradient-to-r from-pink-600 to-purple-600 bg-clip-text text-transparent mb-4">
+              Technology Stack
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              Advanced AI frameworks and tools for building intelligent, scalable artificial intelligence solutions
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {technologiesData.map((tech, idx) => (
+              <div key={idx} className="group bg-white rounded-2xl p-6 shadow-lg hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-gray-100" data-testid={`technology-${tech.name.toLowerCase().replace(/\s+/g, '-')}`}>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-md">
+                    <img 
+                      src={tech.icon} 
+                      alt={`${tech.name} logo`} 
+                      className="w-10 h-10 object-contain" 
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold text-gray-900 mb-2">{tech.name}</h3>
+                  <p className="text-sm text-gray-600">{tech.description}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
