@@ -8,6 +8,9 @@ import { useTranslation } from "@/lib/translation-context";
 import peopleIcon from "@assets/Asset 17_1757767623440.png";
 import gearsIcon from "@assets/Asset 5_1757767623439.png";
 
+// Import background images
+import heroBackgroundImage from "@assets/pexels-a-darmel-7710153a_1758365400181.jpg";
+
 export default function Home() {
   const { t } = useTranslation();
 
@@ -32,9 +35,14 @@ export default function Home() {
   return (
     <div data-testid="home-page">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-50 via-white to-blue-50 py-16 pt-24 relative overflow-hidden">
+      <section 
+        className="py-16 pt-24 relative overflow-hidden bg-cover bg-center bg-no-repeat"
+        style={{
+          backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url(${heroBackgroundImage})`
+        }}
+      >
         {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/5 to-transparent"></div>
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-600/10 to-transparent"></div>
         
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 items-start">
@@ -42,16 +50,16 @@ export default function Home() {
             <div className="lg:col-span-2 space-y-8 relative z-10">
               {/* Main Hero Content */}
               <div className="space-y-6 animate-in slide-in-from-left duration-700">
-                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-gradient-to-r from-blue-50 to-green-50 border border-blue-100 mb-4">
-                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                  <span className="text-sm font-medium text-gray-700">{t.home.hero.badge}</span>
+                <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-sm border border-white/30 mb-4">
+                  <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  <span className="text-sm font-medium text-white">{t.home.hero.badge}</span>
                 </div>
                 
-                <h1 className="text-5xl lg:text-6xl font-bold text-gray-900 leading-tight" data-testid="hero-title">
+                <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight drop-shadow-lg" data-testid="hero-title">
                   {t.home.hero.title}
                 </h1>
                 
-                <p className="text-lg text-gray-600 leading-relaxed" data-testid="hero-description">
+                <p className="text-lg text-white/90 leading-relaxed drop-shadow-md" data-testid="hero-description">
                   {t.home.hero.subtitle}
                 </p>
                 
