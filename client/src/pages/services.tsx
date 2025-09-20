@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { Users, ServerCog, Server, GraduationCap, Rocket, BarChart, SquareArrowOutUpLeft } from "lucide-react";
+import { Users, ServerCog, Server, GraduationCap, Rocket, BarChart, SquareArrowOutUpLeft, Building2, Monitor } from "lucide-react";
 import { useTranslation } from "@/lib/translation-context";
 
 export default function Services() {
@@ -74,7 +74,7 @@ export default function Services() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
               
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
-                <i className="fas fa-chart-line text-3xl text-white group-hover:scale-110 transition-transform duration-300"></i>
+                <Building2 className="h-10 w-10 text-white group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h2 className="text-3xl font-bold mb-4 relative z-10">{t.services.bpo.title}</h2>
               <p className="text-white/90 mb-6 text-lg leading-relaxed relative z-10">
@@ -94,7 +94,7 @@ export default function Services() {
               <div className="absolute top-0 right-0 w-32 h-32 bg-white/10 rounded-bl-full transform scale-0 group-hover:scale-100 transition-transform duration-500"></div>
               
               <div className="w-20 h-20 bg-white/20 backdrop-blur-sm rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-300 shadow-lg relative z-10">
-                <i className="fas fa-code text-3xl text-white group-hover:scale-110 transition-transform duration-300"></i>
+                <Monitor className="h-10 w-10 text-white group-hover:scale-110 transition-transform duration-300" />
               </div>
               <h2 className="text-3xl font-bold mb-4 relative z-10">{t.services.software.title}</h2>
               <p className="text-white/90 mb-6 text-lg leading-relaxed relative z-10">
