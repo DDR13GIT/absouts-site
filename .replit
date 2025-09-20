@@ -7,7 +7,7 @@ channel = "stable-24_05"
 
 [deployment]
 deploymentTarget = "static"
-build = ["sh", "-c", "npm run build && node build/fetch-notion-data.js"]
+build = ["sh", "-c", "node build/fetch-notion-data.js && npm run build "]
 publicDir = "dist/public"
 
 [env]
